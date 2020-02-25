@@ -1,6 +1,6 @@
 const {db}  =require('../mid/db')
 
-const {Sequelize,Model}  =require('Sequelize')
+const {Sequelize,Model}  =require('sequelize')
 
 class User extends Model{
 
