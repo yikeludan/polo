@@ -2,7 +2,8 @@
 ## 基于node.js的 企业开发框架
 
 +1.0 手写了 轻量级的node orm mysql 框架代码 示例
-   ``` const obj ={
+   ```
+   const obj ={
            queryType:'SELECTALL',
            where:{
                passWord:{
