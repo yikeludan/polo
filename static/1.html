@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    /* 样式初始化 */* {
+        margin:0;
+        padding:0;
+    }
+    html,body {
+        width:100%;
+    }
+    aside {
+        height:100%;
+        width:100%;
+    }
+    /* 列表的父盒子，限制宽高 *//* 注意设置overflow:hidden;
+        样式后，超出这个盒子的ul将不会显示 */.draw {
+                                 width:60px;
+                                 height:500px;
+                                 border:2px solid #ccc;
+                                 overflow:hidden;
+                                 position:fixed;
+                                 left:10px;
+                                 top:50%;
+                                 transform:translateY(-50%);
+                             }
+    /* li 设置了浮动， 所以 ul 要清除浮动 */ul:after {
+                                   content:"";
+                                   display:block;
+                                   visibility:hidden;
+                                   height:0;
+                                   clear:both;
+                               }
+    ul {
+        zoom:1;
+    }
+    li {
+        list-style:none;
+        float:left;
+        width:60px;
+        height:60px;
+        line-height:60px;
+        text-align:center;
+    }
+
+</style>
+<body>
+<aside class="main">
+    <div class="draw" id="draw">
+        <ul>
+            <li style="background:orange">列表一</li>
+            <li style="background:yellowgreen">列表二</li>
+            <li style="background:yellow">列表三</li>
+            <li style="background:cyan">列表四</li>
+            <li style="background:orangered">列表五</li>
+            <li style="background:pink">列表六</li>
+            <li style="background:red">列表七</li>
+            <li style="background:purple">列表八</li>
+            <li style="background:violet">列表九</li>
+            <li style="background:brown">列表十</li></ul>
+    </div>
+</aside>
+</body>
+<script>
+    var draw = document.querySelector('#draw');
+    var ul = draw.children[0];
+    // touchstart 时，记录手指在 Y 轴上的落点距离可视顶部距离
+    var startY = 0;
+    ul.addEventListener('touchstart', function (e) {
+        startY = e.changedTouches[0].clientY;
+    })
+    // touchmove 时，记录此时手指在 Y 轴上的落点距离可视顶部距离
+    ul.addEventListener('touchmove', function (e) {  // 获取差值
+        var dy = e.changedTouches[0].clientY - startY;  // 设置ul在Y轴上的偏移
+        ul.style.transform = 'translateY(' + dy + 'px)';
+    })
+</script>
+</html>
