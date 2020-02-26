@@ -65,10 +65,9 @@ router.post('/user/register',async (ctx,next)=>{
         }
     };
 
-           const res = await new userDao("user").routerSql(obj1);
-
+            const res = await new userDao("user").routerSql(obj1);
             console.log(res)
-           res.transaction.conn.commit(function() {
+            res.transaction.conn.commit(function() {
                         console.log('执行成功');
             })
 
