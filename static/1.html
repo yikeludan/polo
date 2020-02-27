@@ -98,6 +98,7 @@
     // touchstart 时，记录手指在 Y 轴上的落点距离可视顶部距离
     ul.addEventListener('touchstart', function (e) {
         startY = e.changedTouches[0].clientY;
+        console.log("e.timeStamp = "+ e.timeStamp)
     })
     // touchmove 时，记录此时手指在 Y 轴上的落点距离可视顶部距离
     ul.addEventListener('touchmove', function (e) {      // 清除过渡
@@ -131,6 +132,12 @@
             ul.style.transform = 'translateY(' + centerY + 'px)';
         }
     })
+
+
+    function setPos(y) {//传们列表y轴位置,移动列表
+        ul.style.transform = "translateY(" + y + "px) translateZ(0)";
+    }
+
 </script>
 </body>
 </html>
