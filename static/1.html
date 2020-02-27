@@ -90,7 +90,7 @@
     var ul = draw.children[0];
     var startY = 0; // 刚触碰到屏幕的时的手指信息
     var centerY = 0; // 用来记录每次触摸时上一次的偏移距离
-    var maxDown = 50; // 设定一个最大向下滑动的距离
+    var maxDown = 120; // 设定一个最大向下滑动的距离
     var maxUp = -(ul.offsetHeight - draw.offsetHeight + maxDown); // 求得一个最大向上滑动的距离
     var maxUpBounce = 0; // 向上反弹值
     var maxDownBounce = -(ul.offsetHeight - draw.offsetHeight); // 向下反弹值
