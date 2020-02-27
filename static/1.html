@@ -24,7 +24,7 @@
         border: 2px solid #ccc;
         overflow: hidden;
         position: fixed;
-        top: 50%;
+        top: 60%;
         transform: translateY(-50%);
     }
     /* li 设置了浮动， 所以 ul 要清除浮动 */
@@ -90,8 +90,9 @@
     var ul = draw.children[0];
     var startY = 0; // 刚触碰到屏幕的时的手指信息
     var centerY = 0; // 用来记录每次触摸时上一次的偏移距离
-    var maxDown = 120; // 设定一个最大向下滑动的距离
-    var maxUp = -(ul.offsetHeight - draw.offsetHeight + maxDown); // 求得一个最大向上滑动的距离
+    var maxDown = 80; // 设定一个最大向下滑动的距离
+    var maxDownTemp  = 350
+    var maxUp = -(ul.offsetHeight - draw.offsetHeight + maxDownTemp); // 求得一个最大向上滑动的距离
     var maxUpBounce = 0; // 向上反弹值
     var maxDownBounce = -(ul.offsetHeight - draw.offsetHeight); // 向下反弹值
     // touchstart 时，记录手指在 Y 轴上的落点距离可视顶部距离
@@ -132,4 +133,4 @@
     })
 </script>
 </body>
-</html>p;
+</html>
