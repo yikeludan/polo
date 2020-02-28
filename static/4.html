@@ -99,6 +99,113 @@
         <li></li>
         <li></li>
         <li></li>
+
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ol>
 </div>
 <script>
@@ -127,6 +234,7 @@
 
         ctx.addEventListener("mousemove", function (e) {
             if (isDown) {//如果鼠标是从容器里开始滑动的
+
                 if (e.timeStamp - this._startTime > 40) {//如果是慢速滑动，就不会产生力度，列表是跟着鼠标移动的
                     this._startTime = e.timeStamp;//慢速滑动不产生力度，所以需要实时更新时间戳
                     cur = e.clientY - this._oy;//列表位置应为 鼠标当前位置减去鼠标按下时与列表位置的差值,如:列表初始位置为0,鼠标在 5的位置按,那么差值为 5,此处假如鼠标从5滑动到了4,向上滑,cur = 4-5 =-1  ,假如鼠标从5滑动到了6,向下滑,cur= 6 - 5 = 1
@@ -150,7 +258,7 @@
 
         }, false);
 
-        ctx.addEventListener("mouseleave", mleave, false);
+        //ctx.addEventListener("mouseleave", mleave, false);
 
         ctx.addEventListener("mouseup", mleave, false);
 
@@ -196,11 +304,11 @@
                     if (Math.abs(vy) < 1) {//如果力度减小到小于1了,再做超出回弹
                         clearTimeout(t._timer);
                         if (cur > 0) {
-                            ease(0);
+                           // ease(0);
                             return;
                         }
                         if (-cur > oh) {
-                            ease(-oh);
+                            //ease(-oh);
                             return;
                         }
                     }

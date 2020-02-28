@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalabel=no"/>
+    <meta charset="utf-8"/>
+    <title>移动手指事件滚动使用速度</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: relative;
+            margin: 50px;
+            width: calc(100% - 100px);
+            height: 400px;
+            border: 1px solid green;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .container .scroll {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+        .container p {
+            margin: 0 auto 10px;
+            width: 80%;
+            height: 80px;
+            border: 1px solid yellow;
+        }
+        .container .scroll:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .container .barBox {
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            width: 3px;
+            height: calc(100% - 4px);
+            background: rgba(100, 200, 100, 0.3);
+        }
+        .container .barBox .bar {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 0;
+            width: 100%;
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="scroll">
+        <p style="border-color: green;"></p><p style="border-color: yellow;"></p><p style="border-color: #932132;"></p>
+        <p style="border-color: #00007f;"></p><p style="border-color: red;"></p><p style="border-color: #432892;"></p>
+        <p style="border-color: #007f00;"></p><p style="border-color: blue;"></p><p style="border-color: green;"></p>
+        <p style="border-color: #7f0000;"></p><p style="border-color: #003947;"></p><p style="border-color: #cccc33;"></p>
+        <p style="border-color: green;"></p><p style="border-color: yellow;"></p><p style="border-color: #932132;"></p>
+        <p style="border-color: #00007f;"></p><p style="border-color: red;"></p><p style="border-color: #432892;"></p>
+        <p style="border-color: #007f00;"></p><p style="border-color: blue;"></p><p style="border-color: green;"></p>
+        <p style="border-color: #7f0000;"></p><p style="border-color: #003947;"></p><p style="border-color: #cccc33;"></p>
+        <p style="border-color: green;"></p><p style="border-color: yellow;"></p><p style="border-color: #932132;"></p>
+        <p style="border-color: #00007f;"></p><p style="border-color: red;"></p><p style="border-color: #432892;"></p>
+        <p style="border-color: #007f00;"></p><p style="border-color: blue;"></p><p style="border-color: green;"></p>
+        <p style="border-color: #7f0000;"></p><p style="border-color: #003947;"></p><p style="border-color: #cccc33;"></p>
+    </div>
+    <!--<div class="barBox" id="barBox">
+        <div class="bar">1</div>
+    </div>-->
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oScroll = oContainer.children[0];
+  /*  var oBarBox = document.getElementById('barBox');
+    var oBar = oBarBox.children[0];*/
+
+    // 盒子尺寸
+    var iWrapperH = numberPx(getStyle(oContainer, 'height'));
+    var iScrollH = numberPx(getStyle(oScroll, 'height'));
+   // var iBarBoxH = numberPx(getStyle(oBarBox, 'height'));
+   // var iBarH = iWrapperH / iScrollH * iBarBoxH;
+
+    // 初始状态
+    /*setStyle(oBar, {
+        height: iBarH + 'px'
+    })
+*/
+    // 参数
+    var startTime = 0;
+    var endTime = 0;
+    var pastTime = 0;    // 过去一次的时间
+    var nowTime = 0;    // 当前移动的时间
+    var isMove = false;
+    var iBarTop = 0;
+
+
+    var timer = true;
+
+    oContainer.addEventListener('touchstart', function (e) {
+        startTime = new Date().getTime();
+
+        pastTime = startTime;
+
+        var startY = e.targetTouches[0].clientY;
+        var startTop = numberPx(getStyle(oScroll, 'top'));
+        var endY = startY;
+        var endTop = startTop;
+
+        timer = false;
+
+        var moveFn = function (e) {
+            isMove = true;
+            var nowY = e.targetTouches[0].clientY;
+            var nowTop = startTop;
+            endY = nowY;
+
+            var moveY = nowY - startY;
+            nowTop += moveY;
+            endTop = nowTop = getPos(nowTop);
+
+            setStyle(oScroll, {
+                top: nowTop + 'px'
+            })
+           /* setStyle(oBar, {
+                top: getBarTop(nowTop) + 'px'
+            })*/
+        }
+
+        var endFn = function (e) {
+            endTime = new Date().getTime();
+
+            var speed = (endY - startY) / (endTime - startTime);
+
+            if ( endTime - startTime <= 300 && isMove ) {
+
+                speed *= 16;
+
+                var f = 0,
+                    top = endTop;
+
+                timer = true;
+
+                show();
+                function show () {
+
+                    timer && requestAnimationFrame(show);
+
+                    f =  Math.min(Math.abs(speed) / 10, 0.5); //重点
+                    if( speed > 0.2 ) {
+                        speed -= f
+                    } else if(speed < -0.2){
+                        speed += f
+                    } else {
+                        timer = false
+                        speed = 0
+                        return
+                    }
+
+                    top += speed;
+                    if ( top > 0 || top < iWrapperH -iScrollH ) {
+                        timer = false
+                        speed = 0
+
+                        setStyle(oScroll, {
+                            top: getPos(top) + 'px'
+                        })
+                       /* setStyle(oBar, {
+                            top: getBarTop(getPos(top)) + 'px'
+                        })*/
+                        return
+                    }
+                    setStyle(oScroll, {
+                        top: top + 'px'
+                    })
+                   /* setStyle(oBar, {
+                        top: getBarTop(top) + 'px'
+                    })*/
+                }
+
+            }
+            isMove = false;
+
+            document.documentElement.removeEventListener('touchmove', moveFn);
+            document.documentElement.removeEventListener('touchend', endFn);
+        }
+
+        document.documentElement.addEventListener('touchmove', moveFn);
+        document.documentElement.addEventListener('touchend', endFn);
+    })
+
+
+    function getPos (num) {
+        return num >= 0 ? 0 : (num <= iWrapperH - iScrollH ? iWrapperH - iScrollH : num);
+    }
+
+    function getBarTop (num) {
+        return -num / iScrollH * iBarBoxH;
+    }
+
+    function getStyle (obj, name) {
+        if(window.getComputedStyle) {
+            return getComputedStyle(obj, null)[name];
+        } else {
+            return obj.currentStyle[name];
+        }
+    }
+    function setStyle (obj, oStyle) {
+        for(var i in oStyle) {
+            obj.style[i] = oStyle[i];
+        }
+    }
+    function numberPx (num) {
+        return Number(num.split('px')[0]);
+    }
+
+</script>
+</body>
+</html>
