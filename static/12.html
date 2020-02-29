@@ -29,6 +29,9 @@
             height: 70vh;
             border: 1px solid yellow;
         }
+        .scroll {
+            zoom: 1;
+        }
         .container .scroll:after {
             content: '';
             display: block;
@@ -70,13 +73,14 @@
     scroll.addEventListener('touchstart',function (e){
         startTime = new Date().getTime();
         startY = e.changedTouches[0].clientX;
+        console.log(scroll.offsetLeft)
 
        // e.preventDefault();
     })
     scroll.addEventListener('touchmove',function (e){
         endY = e.changedTouches[0].clientX;
         var dy = endY - startY;
-        dy = damping(dy,oContainer.offsetWidth)
+        dy = damping(dy,oContainer.offsetWidth)//阻尼系数
 
         scroll.style.left =dy+"px"
       //  e.preventDefault();
@@ -84,9 +88,10 @@
     })
 
     scroll.addEventListener('touchend',function (e){
-        console.log("nowTop = "+scroll.offsetTop)
-
-
+          console.log(scroll.offsetLeft)
+          var  cc = 0
+          scroll.style.transition = 'transform .3s';
+          scroll.style.transform = 'translate(250px)';
 
     })
 
