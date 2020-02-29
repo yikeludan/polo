@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalabel=no"/>
-    <meta charset="utf-8"/>
-    <title>移动手指事件滚动使用速度</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
     <style>
         * {
             margin: 0;
@@ -61,119 +61,57 @@
 </div>
 <script>
     var oContainer = document.getElementById('container');
-    var oScroll = oContainer.children[0];
+    var scroll = oContainer.children[0];
+/*    console.log("iWrapperH = "+oContainer.offsetHeight)
+    console.log("iScrollH = "+oContainer.scrollHeight)
+    console.log("iScrollHTop = "+scroll.offsetTop)*/
 
-
-    // 盒子尺寸
-    var iWrapperH = numberPx(getStyle(oContainer, 'height'));
-    var iScrollH = numberPx(getStyle(oScroll, 'height'));
-    console.log("iWrapperH = "+iWrapperH)
-    console.log("iScrollH = "+iScrollH)
-
-
-    // 参数
-    var startTime = 0;
+    var startTime =  0;
+    var startY  = 0;
+    var endY = 0
+    var centerY = 0;
     var endTime = 0;
-    var isMove = false;
-
-
-    var timer = true;
-
-    oContainer.addEventListener('touchstart', function (e) {
-        startTime = new Date().getTime();
-
-        pastTime = startTime;
-
-        var startY = e.targetTouches[0].clientY;
-        var startTop = numberPx(getStyle(oScroll, 'top'));
-        console.log("startTop = "+startTop)
-        var endY = startY;
-        var endTop = startTop;
-
+    var  timer = true;
+    var nowTop = 0;
+    var startTop  = 0
+    var enTop = 0;
+    var speed = 0;
+    var top = 0;
+    var f = 0;
+    scroll.addEventListener('touchstart',function (e){
+       startTime = new Date().getTime();
+        startY = e.changedTouches[0].clientY;
+        startTop = scroll.offsetTop;
+        enTop  = startTop
         timer = false;
+    })
+    scroll.addEventListener('touchmove',function (e){
+         endY = e.changedTouches[0].clientY;
+        var dy = endY - startY;
+         scroll.style.top = centerY+dy+"px";
+         nowTop = startTop;
+         nowTop += dy;
 
-        var moveFn = function (e) {
-            isMove = true;
-            var nowY = e.targetTouches[0].clientY;
-            var nowTop = startTop;
-            endY = nowY;
-
-            var moveY = nowY - startY;
-            nowTop += moveY;
-            endTop = nowTop = getPos(nowTop);
-
-            setStyle(oScroll, {
-                top: nowTop + 'px'
-            })
-
-        }
-
-        var endFn = function (e) {
-            endTime = new Date().getTime();
-
-            var speed = (endY - startY) / (endTime - startTime);
-
-            if ( endTime - startTime <= 300 && isMove ) {
-
-                speed *= 16;
-
-                var f = 0,
-                    top = endTop;
-
-                timer = true;
-
-                show();
-                function show () {
-
-                    timer && requestAnimationFrame(show);
-
-                    f =  Math.min(Math.abs(speed) / 10, 0.5); //重点
-                    if( speed > 0.2 ) {
-                        speed -= f
-                    } else if(speed < -0.2){
-                        speed += f
-                    } else {
-                        timer = false
-                        speed = 0
-                        return
-                    }
-
-                    top += speed;
-                   /* if ( top > 0 || top < iWrapperH -iScrollH ) {
-                        timer = false
-                        speed = 0
-
-                        setStyle(oScroll, {
-                            top: getPos(top) + 'px'
-                        })
-
-                        return
-                    }*/
-                    setStyle(oScroll, {
-                        top: top + 'px'
-                    })
-
-                }
-
-            }
-            isMove = false;
-
-            document.documentElement.removeEventListener('touchmove', moveFn);
-            document.documentElement.removeEventListener('touchend', endFn);
-        }
-
-        document.documentElement.addEventListener('touchmove', moveFn);
-        document.documentElement.addEventListener('touchend', endFn);
     })
 
+    scroll.addEventListener('touchend',function (e){
+        timer = true;
 
-    function getPos (num) {
-        return num >= 0 ? 0 : (num <= iWrapperH - iScrollH ? iWrapperH - iScrollH : num);
-    }
+        centerY = scroll.offsetTop;
+         endTime = new Date().getTime();
+         speed = (endY - startY) / (endTime - startTime);
 
-    function getBarTop (num) {
-        return -num / iScrollH * iBarBoxH;
-    }
+        if(endTime - startTime <= 300){
+            speed *= 16;
+            f = 0,
+            top = nowTop;
+            show();
+
+        }
+
+
+    })
+
 
     function getStyle (obj, name) {
         if(window.getComputedStyle) {
@@ -190,7 +128,30 @@
     function numberPx (num) {
         return Number(num.split('px')[0]);
     }
+    function show () {
+        if(!timer){
+            return
+        }
+        requestAnimationFrame(show)
 
+        f =  Math.min(Math.abs(speed) / 10, 0.5); //重点
+        if( speed > 0.2 ) {
+            speed -= f
+        } else if(speed < -0.2){
+            speed += f
+        } else {
+            timer = false
+            speed = 0
+            return
+        }
+
+        nowTop += speed;
+        console.log(nowTop)
+
+        scroll.style.top = nowTop+"px";
+        centerY = scroll.offsetTop;
+
+    }
 </script>
 </body>
 </html>
