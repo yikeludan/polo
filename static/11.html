@@ -168,29 +168,29 @@
         startTop = scroll.offsetTop;
         enTop  = startTop
         timer = false;
+        e.preventDefault();
     })
     scroll.addEventListener('touchmove',function (e){
          endY = e.changedTouches[0].clientY;
-        var dy = endY - startY;
+         var dy = endY - startY;
          scroll.style.top = centerY+dy+"px";
-         nowTop = startTop;
+         nowTop = scroll.offsetTop;
          nowTop += dy;
+         console.log("nowTop = "+nowTop)
+        e.preventDefault();
 
     })
 
     scroll.addEventListener('touchend',function (e){
+        console.log("nowTop = "+scroll.offsetTop)
         timer = true;
-
         centerY = scroll.offsetTop;
-         endTime = new Date().getTime();
-         speed = (endY - startY) / (endTime - startTime);
-
+        endTime = new Date().getTime();
+        speed = (endY - startY) / (endTime - startTime); //求出惯性速度
         if(endTime - startTime <= 300){
             speed *= 16;
             f = 0,
-            top = nowTop;
             show();
-
         }
 
 
@@ -217,7 +217,6 @@
             return
         }
         requestAnimationFrame(show)
-
         f =  Math.min(Math.abs(speed) / 10, 0.5); //重点
         if( speed > 0.2 ) {
             speed -= f
@@ -230,7 +229,6 @@
         }
 
         nowTop += speed;
-        console.log(nowTop)
 
         scroll.style.top = nowTop+"px";
         centerY = scroll.offsetTop;
