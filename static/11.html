@@ -234,6 +234,19 @@
         centerY = scroll.offsetTop;
 
     }
+
+
+
+    // 阻尼函数
+    function  damping(x, max) {
+        //tempY = damping(tempY,draw.offsetHeight)
+
+        let y = Math.abs(x);
+        y = 0.82231 * max / (1 + 4338.47 / Math.pow(y, 1.14791));
+        const a = Math.round(x < 0 ? -y : y)
+        // console.log("a = "+a)
+        return a;
+    }
 </script>
 </body>
 </html>

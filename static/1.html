@@ -20,11 +20,13 @@
     /* 列表的父盒子，限制宽高 */
     /* 注意设置overflow: hidden;样式后，超出这个盒子的ul将不会显示 */
     .draw {
-        height: 800px;
+        width: 60px;
+        height: 500px;
         border: 2px solid #ccc;
         overflow: hidden;
         position: fixed;
-        top: 60%;
+        left: 10px;
+        top: 50%;
         transform: translateY(-50%);
     }
     /* li 设置了浮动， 所以 ul 要清除浮动 */
@@ -41,7 +43,7 @@
     li {
         list-style: none;
         float: left;
-        width: 100vw;
+        width: 60px;
         height: 60px;
         line-height: 60px;
         text-align: center;
@@ -62,26 +64,6 @@
             <li style="background:purple">列表八</li>
             <li style="background:violet">列表九</li>
             <li style="background:brown">列表十</li>
-
-            <li style="background:purple">列表八</li>
-            <li style="background:violet">列表九</li>
-            <li style="background:brown">列表十</li>
-
-            <li style="background:purple">列表八</li>
-            <li style="background:violet">列表九</li>
-            <li style="background:brown">列表十</li>
-
-            <li style="background:purple">列表八</li>
-            <li style="background:violet">列表九</li>
-            <li style="background:brown">列表十</li>
-
-            <li style="background:purple">列表八</li>
-            <li style="background:violet">列表九</li>
-            <li style="background:brown">列表十</li>
-
-            <li style="background:purple">列表八</li>
-            <li style="background:violet">列表九</li>
-            <li style="background:brown">列表十</li>
         </ul>
     </div>
 </aside>
@@ -90,35 +72,21 @@
     var ul = draw.children[0];
     var startY = 0; // 刚触碰到屏幕的时的手指信息
     var centerY = 0; // 用来记录每次触摸时上一次的偏移距离
-    var maxDown = 80; // 设定一个最大向下滑动的距离
-    var maxDownTemp  = 350
-    var maxUp = -(ul.offsetHeight - draw.offsetHeight + maxDownTemp); // 求得一个最大向上滑动的距离
+    var maxDown = 50; // 设定一个最大向下滑动的距离
+    var maxUp = -(ul.offsetHeight - draw.offsetHeight + maxDown); // 求得一个最大向上滑动的距离
     var maxUpBounce = 0; // 向上反弹值
-    var vy = 0;
     var maxDownBounce = -(ul.offsetHeight - draw.offsetHeight); // 向下反弹值
     // touchstart 时，记录手指在 Y 轴上的落点距离可视顶部距离
     ul.addEventListener('touchstart', function (e) {
         startY = e.changedTouches[0].clientY;
-        this._startTime = e.timeStamp;
-        vy = 0;
-
     })
     // touchmove 时，记录此时手指在 Y 轴上的落点距离可视顶部距离
     ul.addEventListener('touchmove', function (e) {      // 清除过渡
-        ul.style.transition = 'none';
-        var a = parseInt(e.timeStamp);
-        var b = parseInt(this._startTime)
-        var c = a-b;
-       // console.log(a+"-"+b+"="+c)
-// 获取差值
-            this._startTime = e.timeStamp;
-            var dy = e.changedTouches[0].clientY - startY;
-            // 上次的滑动距离加上本次的滑动距离
-            var tempY = centerY + dy;
-
-
-
-        //tempY = damping(tempY,draw.offsetHeight)
+        ul.style.transition = 'none';      // 获取差值
+        var dy = e.changedTouches[0].clientY - startY;
+        // 上次的滑动距离加上本次的滑动距离
+        var tempY = centerY + dy;
+        tempY = damping(tempY,draw.offsetHeight)
         // 当上次滑动的距离加上本次滑动的距离 大于 设定的最大向下距离的时候
         if (tempY > maxDown) {
             tempY = maxDown;
@@ -126,30 +94,13 @@
         else if (tempY < maxUp) {
             tempY = maxUp;
         }
-
-        vy = dy
-
         // 设置 ul 在 Y 轴上的偏移
-       // ul.style.transform = 'translateY(' + tempY + 'px)';
+        ul.style.transform = 'translateY(' + tempY + 'px)';
     })
     // touchend 时，记录此时手指在 Y 轴上的落点距离可视顶部距离
     ul.addEventListener('touchend', function (e) {      // 获取差值
         var dy = e.changedTouches[0].clientY - startY;      // 记录移动的距离
         centerY = centerY + dy;
-        var t = this,
-            friction = ((vy >> 31) * 2 + 1) * 0.5;//根据力度套用公式计算出惯性大小,公式要记住
-            console.log("friction = "+friction+"-vy = "+vy)
-        this._timer = setInterval(function () {
-            vy -= friction;//力度按 惯性的大小递减
-            dy+=vy;
-            centerY = centerY + dy;
-            ul.style.transform = 'translateY(' + dy + 'px)';
-            if (Math.abs(vy) < 1) {//如果力度减小到小于1了,再做超出回弹
-                clearTimeout(t._timer);
-                return;
-            }
-        }, 20);
-
         // 两次滑动的距离 大于 设定的 向上 反弹值时
         if (centerY > maxUpBounce) {        // 让两次滑动的距离 等于 设置的值
             centerY = maxUpBounce;        // 添加过渡
@@ -163,20 +114,15 @@
         }
     })
 
-
-    function setPos(y) {//传们列表y轴位置,移动列表
-        ul.style.transform = "translateY(" + y + "px) translateZ(0)";
-    }
-
-    // 阻尼函数
     function  damping(x, max) {
+        //tempY = damping(tempY,draw.offsetHeight)
+        //max=450
         let y = Math.abs(x);
-        y = 0.82231 * max / (1 + 4338.47 / Math.pow(y, 1.14791));
+        y = 0.7 * max / (1 + 4338 / Math.pow(y, 1.14));
         const a = Math.round(x < 0 ? -y : y)
         // console.log("a = "+a)
         return a;
     }
-
 </script>
 </body>
 </html>

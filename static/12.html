@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalabel=no"/>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            border: 1px solid green;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .container .scroll {
+            position: absolute;
+            top: 5vh;
+            left: 0;
+            width: 100%;
+        }
+        .container p {
+            margin: 0 auto 5px;
+            width: 96%;
+            height: 70vh;
+            border: 1px solid yellow;
+        }
+        .container .scroll:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="scroll">
+        <p style="border-color: green;"></p>
+    </div>
+    <!--<div class="barBox" id="barBox">
+        <div class="bar">1</div>
+    </div>-->
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var scroll = oContainer.children[0];
+    /*    console.log("iWrapperH = "+oContainer.offsetHeight)
+        console.log("iScrollH = "+oContainer.scrollHeight)
+        console.log("iScrollHTop = "+scroll.offsetTop)*/
+    var num = getQueryVariable("num")
+    console.log(num)
+    var startTime =  0;
+    var startY  = 0;
+    var endY = 0
+    var centerY = 0;
+    var endTime = 0;
+    var  timer = true;
+    var nowTop = 0;
+    var startTop  = 0
+    var enTop = 0;
+    var speed = 0;
+    var top = 0;
+    var f = 0;
+    scroll.addEventListener('touchstart',function (e){
+        startTime = new Date().getTime();
+        startY = e.changedTouches[0].clientX;
+
+       // e.preventDefault();
+    })
+    scroll.addEventListener('touchmove',function (e){
+        endY = e.changedTouches[0].clientX;
+        var dy = endY - startY;
+        dy = damping(dy,oContainer.offsetWidth)
+
+        scroll.style.left =dy+"px"
+      //  e.preventDefault();
+
+    })
+
+    scroll.addEventListener('touchend',function (e){
+        console.log("nowTop = "+scroll.offsetTop)
+
+
+
+    })
+
+
+    function getStyle (obj, name) {
+        if(window.getComputedStyle) {
+            return getComputedStyle(obj, null)[name];
+        } else {
+            return obj.currentStyle[name];
+        }
+    }
+    function setStyle (obj, oStyle) {
+        for(var i in oStyle) {
+            obj.style[i] = oStyle[i];
+        }
+    }
+    function numberPx (num) {
+        return Number(num.split('px')[0]);
+    }
+    function show () {
+        if(!timer){
+            return
+        }
+        requestAnimationFrame(show)
+        f =  Math.min(Math.abs(speed) / 10, 0.5); //重点
+        if( speed > 0.2 ) {
+            speed -= f
+        } else if(speed < -0.2){
+            speed += f
+        } else {
+            timer = false
+            speed = 0
+            return
+        }
+
+        nowTop += speed;
+
+        scroll.style.top = nowTop+"px";
+        centerY = scroll.offsetTop;
+
+    }
+
+
+
+    // 阻尼函数
+    function  damping(x, max) {
+        //tempY = damping(tempY,draw.offsetHeight)
+
+        let y = Math.abs(x);
+        y = num * max / (1 + 4338 / Math.pow(y, 1.14));
+        const a = Math.round(x < 0 ? -y : y)
+        // console.log("a = "+a)
+        return a;
+    }
+
+
+    function getQueryVariable(variable)
+    {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+</script>
+</body>
+</html>
