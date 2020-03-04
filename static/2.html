@@ -1,29 +1,50 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Title</title>
     <style>
-        #scroll{
-            width:100px;
-            height:100px;
-            border-radius:50%;
-            background:red;
-            border:6px solid yellow;
-            text-align:center;
-            line-height:100px;
-            font-size:40px;
-            color:#fff;
-            font-weight:bold;
-            /*过渡效果*/
-            transition:all 3s;
-        }
-
-        #scroll:hover{
-            transform:translate(500px) rotate(1080deg);
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            left: 0px;
         }
     </style>
 </head>
 <body>
-<div id="scroll">滚</div>
+<button>回到起点</button>
+<button>回到200</button>
+<button>回到400</button>
+<div></div>
+<script>
+    var btn1 = document.getElementsByTagName("button")[0];
+    var btn2 = document.getElementsByTagName("button")[1];
+    var btn3 = document.getElementsByTagName("button")[2];
+    var divEle = document.getElementsByTagName("div")[0];
+    btn1.onclick = function () {
+        animate(divEle, 0);
+    }
+    btn2.onclick = function () {
+        animate(divEle, 200);
+    }
+    btn3.onclick = function () {
+        animate(divEle, 400);
+    }
+
+    function animate(ele, target) {
+        clearInterval(ele.timer);
+        ele.timer = setInterval(function () {
+            var step = (target - ele.offsetLeft) / 10;
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            ele.style.left = ele.offsetLeft + step + "px";
+            if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {
+                ele.style.left = target + "px";
+                clearInterval(ele.timer);
+            }
+        }, 15);
+    }
+</script>
 </body>
 </html>

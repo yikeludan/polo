@@ -13,7 +13,6 @@ class dbInit{
         const obj ={};
         obj.where = {
             id:3,
-
         };
 
 
