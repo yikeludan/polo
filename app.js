@@ -37,7 +37,7 @@ function yan(info){
     //     console.log('拒绝连接');
     //     return false;
     // }
-    console.log('通过连接' + url);
+    //console.log('通过连接' + url);
     return true;
 }
 
@@ -46,16 +46,18 @@ let online=0;//存储在线人数
 global.user = user;
 wss.on('connection',function(ws,req){
     online =wss._server._connections;
-    console.log('当前在线' + online+'个连接');
     ws.send('当前在线' + online+'个连接');
     let i = req.url;//提取网址参数
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
-    if(m){
+    const m1 = global.user[m]
+    if(typeof(m1)  ==='undefined') {
         global.user[m] = ws;
+
+        console.log(Object.keys(global.user).length)
     };
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
     ws.on('message',function(msg){
-        console.log('收到'+i+'的消息：'+msg);
+        //console.log('收到'+i+'的消息：'+msg);
         // ws.send(req.headers['sec-websocket-key'])
         // ws.send(req.url)
         if(u){
