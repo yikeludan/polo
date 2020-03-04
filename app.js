@@ -41,7 +41,7 @@ function yan(info){
     return true;
 }
 
-let user={};//存储连接用户
+const user=[];//存储连接用户
 let online=0;//存储在线人数
 global.user = user;
 wss.on('connection',function(ws,req){
@@ -54,7 +54,6 @@ wss.on('connection',function(ws,req){
     if(typeof(m1)  ==='undefined') {
         console.log("m = "+m)
         global.user[m] = ws;
-
         console.log(global.user)
     };
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
