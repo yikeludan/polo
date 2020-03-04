@@ -50,9 +50,14 @@ wss.on('connection',function(ws,req){
     let i = req.url;//提取网址参数
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
     const m1 = user[m];
-    if(typeof(m1)  ==='undefined') {
+    if(typeof(m1)  ==='undefined'&&m==0) {
         console.log("m = "+m)
-        user[m] = ws;
+        user[0] = ws;
+        console.log(user)
+    };
+    if(typeof(m1)  ==='undefined'&&m==1) {
+        console.log("m = "+m)
+        user[1] = ws;
         console.log(user)
     };
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
