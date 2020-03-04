@@ -55,7 +55,7 @@ wss.on('connection',function(ws,req){
         console.log("m = "+m)
         global.user[m] = ws;
 
-        console.log(Object.keys(global.user).length)
+        console.log(global.user)
     };
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
     ws.on('message',function(msg){
