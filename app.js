@@ -43,6 +43,7 @@ function yan(info){
 
 let user={};//存储连接用户
 let online=0;//存储在线人数
+global.user = user;
 wss.on('connection',function(ws,req){
     online =wss._server._connections;
     console.log('当前在线' + online+'个连接');
@@ -50,7 +51,7 @@ wss.on('connection',function(ws,req){
     let i = req.url;//提取网址参数
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
     if(m){
-        user[m] = ws;
+        global.user[m] = ws;
     };
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
     ws.on('message',function(msg){
@@ -59,8 +60,8 @@ wss.on('connection',function(ws,req){
         // ws.send(req.url)
         if(u){
             if (user[u]){
-                if (user[u].readyState===1){
-                    user[u].send(msg);
+                if (global.user[u].readyState===1){
+                    global.user[u].send(msg);
                     ws.send('发送成功');
                 }else{
                     ws.send('对方掉线');
