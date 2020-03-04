@@ -49,7 +49,7 @@ wss.on('connection',function(ws,req){
     ws.send('当前在线' + online+'个连接');
     let i = req.url;//提取网址参数
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
-
+    const m1 = user[m];
     if(typeof(m1)  ==='undefined') {
         console.log("m = "+m)
         user[m] = ws;
