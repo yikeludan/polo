@@ -45,15 +45,15 @@ app1.ws.use((ctx, next) => {
 
         pub.publish("channel"+query.id+","+query.toid, message+","+query.toid)
 
-      //  const aa = ctx.request.query
-      //  global.user[aa.toid].websocket.send(message);
+        //  const aa = ctx.request.query
+        //  global.user[aa.toid].websocket.send(message);
     });
     ctx.websocket.on("close", (message) => {
         /* 连接关闭时, 清理 上下文数组, 防止报错 */
         let index = ctxs.indexOf(ctx);
         const aa1 = ctx.request.query
         if(message ===1001){
-          //  global.user[aa1.toid].websocket.send("关闭连接");
+            //  global.user[aa1.toid].websocket.send("关闭连接");
 
         }
 
