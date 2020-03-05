@@ -9,6 +9,7 @@ let WebSocket = require("koa-websocket");
 let app1 = WebSocket(new Koa());
 let ctxs = [];
 let ctxs1 = {};
+global.user = ctxs1
 app.listen(5000)
 app1.listen(3030);
 
@@ -17,19 +18,19 @@ app1.ws.use((ctx, next) => {
     /* 每打开一个连接就往 上线文数组中 添加一个上下文 */
     const query = ctx.request.query
     ctxs.push(ctx);
-    ctxs1[query.id] =ctx
+    global.user[query.id] =ctx
 
     ctx.websocket.on("message", (message) => {
 
         const aa = ctx.request.query
-         ctxs1[aa.toid].websocket.send(message);
+        global.user[aa.toid].websocket.send(message);
     });
     ctx.websocket.on("close", (message) => {
         /* 连接关闭时, 清理 上下文数组, 防止报错 */
         let index = ctxs.indexOf(ctx);
         const aa1 = ctx.request.query
         if(message ===1001){
-            ctxs1[aa1.toid].websocket.send("关闭连接");
+            global.user[aa1.toid].websocket.send("关闭连接");
 
         }
 
