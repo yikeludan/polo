@@ -55,7 +55,7 @@ wss.on('connection',function(ws,req){
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
 
     user[m] = ws
-    console.log(user)
+    console.log(user[m])
 
 
     ws.on('message',function(msg){
