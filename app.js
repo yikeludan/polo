@@ -57,12 +57,13 @@ wss.on('connection',function(ws,req){
     console.log(m+','+u)
 
     user[m] = ws
-    console.log(3)
+
 
     ws.on('message',function(msg){
         console.log('收到'+i+'的消息：'+msg+"--"+u);
         // ws.send(req.headers['sec-websocket-key'])
         // ws.send(req.url)
+        console.log(user)
         if(u){
             if (user[u]){
                 if (user[u].readyState===1){
