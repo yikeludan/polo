@@ -22,12 +22,13 @@ app.ws.use((ctx, next) => {
     ctx.websocket.on("message", (message) => {
 
         const aa = ctx.request.query
-         console.log(message)
          ctxs1[aa.toid].websocket.send(message);
     });
     ctx.websocket.on("close", (message) => {
         /* 连接关闭时, 清理 上下文数组, 防止报错 */
         let index = ctxs.indexOf(ctx);
+        console.log(message)
+
         ctxs.splice(index, 1);
     });
 });
