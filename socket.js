@@ -28,7 +28,10 @@ app.ws.use((ctx, next) => {
         /* 连接关闭时, 清理 上下文数组, 防止报错 */
         let index = ctxs.indexOf(ctx);
         const aa1 = ctx.request.query
-        ctxs1[aa1.toid].websocket.send(message);
+        if(message ===1001){
+            ctxs1[aa1.toid].websocket.send("关闭连接");
+
+        }
 
 
         ctxs.splice(index, 1);
