@@ -7,6 +7,7 @@ const fs = require('fs');
 class InitManager{
     static initCore(app){
         InitManager.app = app;
+
         InitManager.initRoutes()
         InitManager.initErrorObject()
         InitManager.loadConfig()
@@ -24,6 +25,10 @@ class InitManager{
     static initErrorObject(){
         const error = require('../mid/HttpException')
         global.errs = error
+
+        var user=new Map();//存储连接用户
+        global.user = user;
+        console.log("fff")
     }
 
     static loadConfig(path =''){

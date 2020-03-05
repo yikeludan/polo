@@ -3,7 +3,7 @@ const path = require('path')
 const WebSocket = require('ws');
 
 const parse = require('koa-bodyparser')
-const catchError = require('./mid/exception')
+const {catchError,globalUser} = require('./mid/exception')
 const InitManager = require('./untl/init')
 const dbInit = require('./untl/dbInit')
 
@@ -17,7 +17,6 @@ app.use(parse())
 
 
 app.use(static(path.join(__dirname, './static')))
-
 InitManager.initCore(app)
 dbInit.initCore();
 
@@ -41,24 +40,17 @@ function yan(info){
     return true;
 }
 
-var user={};//存储连接用户
-const map = new Map();
 let online=0;//存储在线人数
-console.log(1)
 
 wss.on('connection',function(ws,req){
     online =wss._server._connections;
-
     ws.send('当前在线' + online+'个连接');
     let i = req.url;//提取网址参数
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
+    console.log("user = "+global.user.toString())
+    global.user.set(m,ws)
 
-    console.log("user = "+user)
-
-    user.set(m,ws)
-    //user[m] = ws
-    console.log(user)
 
 
     ws.on('message',function(msg){
@@ -67,9 +59,9 @@ wss.on('connection',function(ws,req){
         // ws.send(req.url)
        // console.log(user)
         if(u){
-            if (user[u]){
-                if (user[u].readyState===1){
-                    user[u].send(msg);
+            if (global.user[u]){
+                if (global.user[u].readyState===1){
+                    global.user[u].send(msg);
                     ws.send('发送成功');
                 }else{
                     ws.send('对方掉线');

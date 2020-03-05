@@ -22,9 +22,9 @@
     u=u? '我给' + u + '发信息':'我群发'
     a.innerHTML=('我是'+ m + u)
     //-----------------------分割线----------------------------------------------
-   //let ws =new WebSocket('ws://127.0.0.1:3030/'+i)
+   let ws =new WebSocket('ws://127.0.0.1:3030/'+i)
    // let ws =new WebSocket('ws://127.0.0.1:3030/'+i)
-   let ws =new WebSocket('ws://139.196.89.179:3030/'+i)
+   //let ws =new WebSocket('ws://139.196.89.179:3030/'+i)
 
     ws.onmessage=(evt)=>{
         console.log(evt.data)
