@@ -33,6 +33,8 @@
     /* 关闭时 */
     webSocket.onclose = function () {
         console.log("关闭连接");
+        webSocket.send("关闭连接");
+
     };
     /* 发送消息 */
     document.getElementById("send").onclick = function () {
