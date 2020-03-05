@@ -26,8 +26,12 @@ class InitManager{
         const error = require('../mid/HttpException')
         global.errs = error
 
-        var user=new Array();//存储连接用户
+        var user=""//存储连接用户
+        var user1=""//存储连接用户
+
         global.user = user;
+        global.user1 = user1;
+
         console.log("fff")
     }
 

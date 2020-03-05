@@ -48,9 +48,15 @@ wss.on('connection',function(ws,req){
     let i = req.url;//提取网址参数
     let u = i.match(/(?<=:).+?$/);              //提取发给谁
     let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
-    global.user.push(ws)
+    if(m === 0){
+        global.user = ws
 
-    console.log("user = "+global.user.length)
+    }
+    if(m === 1){
+        global.user1 = ws
+
+    }
+
 
 
     ws.on('message',function(msg){
@@ -58,10 +64,10 @@ wss.on('connection',function(ws,req){
         // ws.send(req.headers['sec-websocket-key'])
         // ws.send(req.url)
        // console.log(user)
-        if(u){
-            if (global.user[u]){
-                if (global.user[u].readyState===1){
-                    global.user[u].send(msg);
+        if(u === 1){
+            if (global.user){
+                if (global.user.readyState===1){
+                    global.user.send(msg);
                     ws.send('发送成功');
                 }else{
                     ws.send('对方掉线');
@@ -69,6 +75,7 @@ wss.on('connection',function(ws,req){
             }else{
                 ws.send('找不到对象');
             }
+
         }else{//广播
             wss.clients.forEach(function each(client) {
                 if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -76,7 +83,25 @@ wss.on('connection',function(ws,req){
                 }
             });
         }
+        if(u === 0){
+            if (global.user1){
+                if (global.user1.readyState===1){
+                    global.user1.send(msg);
+                    ws.send('发送成功');
+                }else{
+                    ws.send('对方掉线');
+                }
+            }else{
+                ws.send('找不到对象');
+            }
 
+        }else{//广播
+            wss.clients.forEach(function each(client) {
+                if (client !== ws && client.readyState === WebSocket.OPEN) {
+                    client.send(msg);
+                }
+            });
+        }
         if (online != wss._server._connections){
             online = wss._server._connections;
             ws.send('当前在线' + online + '个连接');
