@@ -24,7 +24,7 @@
     /* 实例化 WebSocket 连接对象, 地址为 ws 协议 */
     var webSocket = CreateWebSocket("ws://139.196.89.179:3030?id=2&toid=1");
 
-    //var webSocket = CreateWebSocket("ws://127.0.0.1:3030?id=2&toid=1");
+   // var webSocket = CreateWebSocket("ws://127.0.0.1:3030?id=2&toid=1");
     /* 接收到服务端的消息时 */
     webSocket.onmessage = function (msg) {
         console.log("服务端说:" + msg.data);
