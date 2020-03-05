@@ -1,12 +1,15 @@
 /* 实例化外部依赖 */
 let Koa = require("koa");
+const Koa1 = require("koa");
+const app1 = new Koa1();
+
 let WebSocket = require("koa-websocket");
 
 /* 实例化 WebSocket, 实例化储存所有上线文数组 并分配监听的端口 */
 let app = WebSocket(new Koa());
 let ctxs = [];
 let ctxs1 = {};
-
+app1.listen(6000)
 app.listen(3030);
 
 /* 实现简单的接发消息 */
