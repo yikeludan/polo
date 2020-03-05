@@ -9,7 +9,7 @@ let WebSocket = require("koa-websocket");
 let app = WebSocket(new Koa());
 let ctxs = [];
 let ctxs1 = {};
-app1.listen(6000)
+app1.listen(5000)
 app.listen(3030);
 
 /* 实现简单的接发消息 */
