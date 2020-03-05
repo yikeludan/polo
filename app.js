@@ -43,7 +43,7 @@ function yan(info){
 
 var user={};//存储连接用户
 const map = new Map();
-
+console.log(1)
 let online=0;//存储在线人数
 wss.on('connection',function(ws,req){
     online =wss._server._connections;
