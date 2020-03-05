@@ -3,8 +3,8 @@ let Koa = require("koa");
 const Koa1 = require("koa");
 
 const redis = require("redis");
-const sub = redis.createClient(6379, '127.0.0.1');
-const pub = redis.createClient(6379, '127.0.0.1');
+const sub = redis.createClient(6379, '139.196.89.179');
+const pub = redis.createClient(6379, '139.196.89.179');
 const app = new Koa1();
 
 let WebSocket = require("koa-websocket");
@@ -54,6 +54,7 @@ app1.ws.use((ctx, next) => {
         const aa1 = ctx.request.query
         if(message ===1001){
             global.user[aa1.toid].websocket.send("关闭连接");
+
         }
 
 
