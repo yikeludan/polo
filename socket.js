@@ -1,57 +1,30 @@
-var WebSocketServer = require('ws').Server,
-    wss = new WebSocketServer({
-        port: 3000, //监听接口
-        verifyClient: socketVerify //可选，验证连接函数
-    });
+/* 实例化外部依赖 */
+let Koa = require("koa");
+let WebSocket = require("koa-websocket");
 
-function socketVerify(info) {
-    console.log(info.origin);
-    console.log(info.req.t);
-    console.log(info.secure);
-    // console.log(info.origin);
-    // var origin = info.origin.match(/^(:?.+\:\/\/)([^\/]+)/);
-    //if (origin.length >= 3 && origin[2] == "blog.luojia.me") {
-    //    return true; //如果是来自blog.luojia.me的连接，就接受
-    //}
-    // console.log("连接",origin[2]);
-    return true; //否则拒绝
-    //传入的info参数会包括这个连接的很多信息，你可以在此处使用console.log(info)来查看和选择如何验证连接
-}
-//广播
-wss.broadcast = function broadcast(s,ws) {
-    // console.log(ws);
-    // debugger;
-    wss.clients.forEach(function each(client) {
-        // if (typeof client.user != "undefined") {
-        if(s == 1){
-            client.send(ws.name + ":" + ws.msg);
-        }
-        if(s == 0){
-            client.send(ws + "退出聊天室");
-        }
-        // }
+/* 实例化 WebSocket, 实例化储存所有上线文数组 并分配监听的端口 */
+let app = WebSocket(new Koa());
+let ctxs = [];
+let ctxs1 = {};
+
+app.listen(3030);
+
+/* 实现简单的接发消息 */
+app.ws.use((ctx, next) => {
+    /* 每打开一个连接就往 上线文数组中 添加一个上下文 */
+    const query = ctx.request.query
+    ctxs.push(ctx);
+    ctxs1[query.id] =ctx
+
+    ctx.websocket.on("message", (message) => {
+
+        const aa = ctx.request.query
+            ctxs1[aa.toid].websocket.send(message);
+
     });
-};
-// 初始化
-wss.on('connection', function(ws) {
-    // console.log(ws.clients.session);
-    // console.log("在线人数", wss.clients.length);
-    ws.send('你是第' + wss.clients.length + '位');
-    // 发送消息
-    ws.on('message', function(jsonStr,flags) {
-        var obj = eval('(' + jsonStr + ')');
-        // console.log(obj);
-        this.user = obj;
-        if (typeof this.user.msg != "undefined") {
-            wss.broadcast(1,obj);
-        }
-    });
-    // 退出聊天
-    ws.on('close', function(close) {
-        try{
-            wss.broadcast(0,this.user.name);
-        }catch(e){
-            console.log('刷新页面了');
-        }
+    ctx.websocket.on("close", (message) => {
+        /* 连接关闭时, 清理 上下文数组, 防止报错 */
+        let index = ctxs.indexOf(ctx);
+        ctxs.splice(index, 1);
     });
 });
