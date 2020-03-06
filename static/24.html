@@ -25,16 +25,12 @@
     /* 实例化 WebSocket 连接对象, 地址为 ws 协议 */
     //var webSocket = CreateWebSocket("ws://139.196.89.179:3030?id=1&toid=2");
 
-    var webSocket = CreateWebSocket("ws://127.0.0.1:3030?id=1&toid=2");
-    /* 接收到服务端的消息时 */
+    var webSocket = CreateWebSocket("ws://127.0.0.1:3030?id=3&toid=1");
     webSocket.onopen = function (msg) {
         console.log("连接:" + msg.data);
 
     };
-    webSocket.onerror = function (msg) {
-        console.log("error" + msg);
-
-    };
+    /* 接收到服务端的消息时 */
     webSocket.onmessage = function (msg) {
         console.log("服务端说:" + msg.data);
         fff.innerHTML = msg.data;
@@ -46,6 +42,8 @@
         webSocket.send("关闭连接");
 
     };
+
+
     /* 发送消息 */
     document.getElementById("send").onclick = function () {
         var str = document.getElementById("content").value;
