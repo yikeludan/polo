@@ -1,6 +1,13 @@
 const Koa = require('koa')
+const Koa1 = require("koa");
+const redis = require("redis");
+const WebSocket = require("koa-websocket");
+
+const sub = redis.createClient(6379, '139.196.89.179');
+const pub = redis.createClient(6379, '139.196.89.179');
+
+
 const path = require('path')
-const WebSocket = require('ws');
 
 const parse = require('koa-bodyparser')
 const {catchError,globalUser} = require('./mid/exception')
@@ -22,73 +29,54 @@ dbInit.initCore();
 
 
 require('./model/user')
+const app1 = WebSocket(new Koa1());
 
+sub.on("subscribe", function (channel, count) {
+    console.log('监听到订阅事件',channel, count)
+});
+//在pub的时候会触发 message事件，我们的所有业务处理基本就是靠监听它了
+sub.on("message", function (channel, message) {
+    console.log('监听到发布事件')
+    const array = message.split(",")
+    const id = array[1];
+    global.user[id].websocket.send(array[0]);
+    console.log("sub channel " + channel + ": " + array[0]+"--"+array[1]);
+});
 
-const wss = new WebSocket.Server({
-    port:3030,
-    verifyClient: yan//验证要不要给连接
-})
+let ctxs = [];
+let ctxs1 = {};
+global.user = ctxs1
 
-function yan(info){
-    let url = info.req.url
-    // let i = url.search(6);
-    // if (i<0){
-    //     console.log('拒绝连接');
-    //     return false;
-    // }
-    //console.log('通过连接' + url);
-    return true;
-}
+app1.listen(3030);
+/* 实现简单的接发消息 */
+app1.ws.use((ctx, next) => {
+    /* 每打开一个连接就往 上线文数组中 添加一个上下文 */
+    const query = ctx.request.query
+    ctxs.push(ctx);
 
-let online=0;//存储在线人数
+    global.user[query.id] =ctx
+    //22 通道 2-1 23 通道1-2
+    sub.subscribe("channel"+query.toid+","+query.id);
 
-wss.on('connection',function(ws,req){
-    online =wss._server._connections;
-    ws.send('当前在线' + online+'个连接');
-    let i = req.url;//提取网址参数
-    let u = i.match(/(?<=:).+?$/);              //提取发给谁
-    let m = i.match(/(?<=\?)[^:]+?(?=:|$)/);    //提取我是谁,这部分代码只有第一次连接的时候运行,如果后面连接的m值相同,前面的连接会被覆盖身份
+    ctx.websocket.on("message", (message) => {
 
-    global.user.push(ws)
+        pub.publish("channel"+query.id+","+query.toid, message+","+query.toid)
 
-    console.log("user = "+global.user.length)
+        //  const aa = ctx.request.query
+        //  global.user[aa.toid].websocket.send(message);
+    });
+    ctx.websocket.on("close", (message) => {
+        /* 连接关闭时, 清理 上下文数组, 防止报错 */
+        let index = ctxs.indexOf(ctx);
+        const aa1 = ctx.request.query
+        if(message ===1001){
+            //  global.user[aa1.toid].websocket.send("关闭连接");
 
-
-    ws.on('message',function(msg){
-        console.log('收到'+i+'的消息：'+msg+"--"+u);
-        // ws.send(req.headers['sec-websocket-key'])
-        // ws.send(req.url)
-       // console.log(user)
-        if(u){
-            if (global.user[u]){
-                if (global.user[u].readyState===1){
-                    global.user[u].send(msg);
-                    ws.send('发送成功');
-                }else{
-                    ws.send('对方掉线');
-                }
-            }else{
-                ws.send('找不到对象');
-            }
-        }else{//广播
-            wss.clients.forEach(function each(client) {
-                if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    client.send(msg);
-                }
-            });
         }
 
-        if (online != wss._server._connections){
-            online = wss._server._connections;
-            ws.send('当前在线' + online + '个连接');
-        }
-        // ws.send(req.headers.origin)
-        // ws.send(JSON.stringify(Array.from(wss.clients)))
-        // ws.send(JSON.stringify(ws))
-        // ws.send(JSON.stringify(req))
-    })
-})
 
-
+        ctxs.splice(index, 1);
+    });
+});
 
 app.listen(5000)
