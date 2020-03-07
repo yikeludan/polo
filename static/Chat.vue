@@ -14,200 +14,30 @@
 
         <div class = "chatUserList">
           <div class="chatScroList">
-          <div class="oneChatList">
-              <div class="chatHead">
+
+
+
+
+          <div class="oneChatList" v-for="(item,index) in chatUserList" @click="toggle(index)">
+              <div class="chatHead" ub = "index">
                 <el-avatar :size="35">
-                  <img src="https://sf3-ttcdn-tos.pstatp.com/img/lark.avatar/da66000e46346df6b51c~72x72.webp"/>
+                  <img :src="item.url"/>
                 </el-avatar>
               </div>
               <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
+                <div class="chatName">{{item.name}}</div>
+                <div class="chatMs">{{item.msg}}</div>
               </div>
-              <div class="chatDate">3-25 16:43
+              <div class="chatDate">{{item.date}}
               </div>
           </div>
 
 
 
 
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
 
 
 
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
-
-
-            <div class="oneChatList">
-              <div class="chatHead">
-                <el-avatar :size="35">
-                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
-                </el-avatar>
-              </div>
-              <div class="chatMessage">
-                <div class="chatName">绘画盒子</div>
-                <div class="chatMs">[飞书机器人]撒旦</div>
-              </div>
-              <div class="chatDate">3-25 16:43
-              </div>
-            </div>
 
 
 
@@ -223,11 +53,11 @@
           <div class="userHeader">
                 <div class="userHeader_1">
                   <el-avatar :size="45">
-                    <img src="https://internal-api-lark-file.feishu.cn/api/avatar/v1/7e540006916dbc00674a/72x72.webp"/>
+                    <img :src="currentChatUser.url"/>
                   </el-avatar>
                 </div>
                 <div class="userHeader_2">
-                   <div class="userHeader_3">绘画盒子</div>
+                   <div class="userHeader_3">{{currentChatUser.name}}</div>
                    <div class="userHeader_4"><i class="el-icon-delete"></i>
                    </div>
                 </div>
@@ -249,46 +79,14 @@
                    <div class="chat_1">
                      <div class="chat_1_1">
 
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
 
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
-
-                       <div class="chatMsBox">
-                         飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
-                       </div>
                        <div class="chatMsBox">
                          飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、应用中心等功能于一体,打造高效的办公方式,加速企业成长
                        </div>
                      </div>
                    </div>
                 <div class="chat_2">
-                  <div class="chat_2_1"><el-input style="min-height: 130px;" placeholder="请输入内容" type="textarea"
+                  <div class="chat_2_1"><el-input style="min-height: 130px;"  @keyup.enter.native="sendMs" placeholder="请输入内容" type="textarea"
                                           v-model="textarea1">
                   </el-input></div>
 
@@ -312,26 +110,182 @@
   export default {
     name: 'Chat',
 
+
+    data() {
+      return {
+        myId:"1",
+        toId:"2",
+        currentChatUser:{
+          name:"",
+          uid:"",
+          url:"",
+          myId:"",
+          toId:"",
+        },
+        chatUserList:[{
+          url:"https://sf3-ttcdn-tos.pstatp.com/img/lark.avatar/da66000e46346df6b51c~72x72.webp",
+          name:"绘画盒子",
+          msg:"撒旦",
+          uid:"",
+          date:"3-27 16:35",
+          id:'ffff'
+        },
+          {
+            url:"https://sf3-ttcdn-tos.pstatp.com/img/lark.avatar/da66000e46346df6b51c~72x72.webp",
+            name:"绘画盒子1",
+            msg:"撒旦",
+            date:"3-27 16:35",
+            id:'ffff',
+            uid:"",
+
+          }],
+        isCollapse: true,
+        textarea1:'',
+        websock: null,
+        input:"",
+        scroll:null,
+        chatMsgBoxDom:null,
+        testMsg:'飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、'
+      };
+    },
+    created() {
+      this.initWebSocket();
+    },
+    destroyed() {
+      this.websock.close() //离开路由之后断开websocket连接
+    },
     mounted(){
-     const chatScroList =   document.querySelector(".chatScroList")
+      const chatScroList = document.querySelector(".chatScroList")
+      const scroll =   document.querySelector(".chat_1_1")
       chatScroList.addEventListener('scroll',function(){
         console.log("a")
       })
       //使聊天框滚动保持再最底部
-      const scroll =   document.querySelector(".chat_1_1")
       scroll.scrollTop = scroll.scrollHeight;
-    },
-    data() {
-      return {
-        isCollapse: true,
-        textarea1:'',
+      this.chatMsgBoxDom = scroll;
+      //this.pushChatBox()
 
-
-      };
     },
     methods: {
+      toggle(index){
+        this.currentChatUser.name = this.chatUserList[index].name;
+        this.currentChatUser.url = this.chatUserList[index].url;
+        this.currentChatUser.uid = this.chatUserList[index].uid;
+        var childs = this.chatMsgBoxDom.childNodes;
+        for(var i = childs.length - 1; i >= 0; i--) {
+          this.chatMsgBoxDom.removeChild(childs[i]);
+        }
+        let data = {
+          action:"goSubOneChat",//sendMsg  goSubOneChat
+          uid:this.myId,
+          toid:"",
+          msg:"初始化1",
+          date:""
+        }
+        this.websocketsend(JSON.stringify(data));
+      },
+      sendMs(value){
 
+        var div = document.createElement('div');
+        var textNode  = document.createTextNode(this.textarea1)
+        div.className+=" chatMsBox";
+        if(this.textarea1.length<="43"&&this.textarea1.length>=35){
+          div.style.width = "600px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="35"&&this.textarea1.length>=20){
+          div.style.width = "500px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="20"&&this.textarea1.length>=10){
+          div.style.width = "400px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="10"&&this.textarea1.length>="7"){
+          div.style.width = "150px"
+          div.style.height = "30px"
+        }
 
+        if(this.textarea1.length<="7"){
+          div.style.width = "100px"
+          div.style.height = "30px"
+        }
+
+        div.appendChild(textNode)
+        this.chatMsgBoxDom.appendChild(div)
+        this.chatMsgBoxDom.scrollTop = this.chatMsgBoxDom.scrollHeight;
+
+        let data = {
+          action:"sendMsg",//sendMsg
+          uid:this.myId,
+          toid:"1",
+          msg:this.textarea1,
+          date:""
+        }
+        this.textarea1 =""
+
+        this.websocketsend(JSON.stringify(data));
+      },
+      pushChatBox(){
+        const chatList = document.querySelectorAll(".oneChatList")
+        var that = this;
+        var inn = null;
+        for (var i = 0; i < chatList.length; i++) {
+          var aa = i;
+          chatList[i].addEventListener('click',function(e,aa){
+
+            const userIndex = this.getAttribute('ub')
+            console.log(this)
+            var childs = that.chatMsgBoxDom.childNodes;
+            for(var i = childs.length - 1; i >= 0; i--) {
+              that.chatMsgBoxDom.removeChild(childs[i]);
+            }
+
+          });
+        }
+
+      },
+
+      initWebSocket(){ //初始化weosocket
+        const wsuri = "ws://139.196.89.179:3030?id="+this.myId+"&toid=2";
+        this.websock = new WebSocket(wsuri);
+        this.websock.onmessage = this.websocketonmessage;
+        this.websock.onopen = this.websocketonopen;
+        this.websock.onerror = this.websocketonerror;
+        this.websock.onclose = this.websocketclose;
+      },
+      websocketonopen(){ //连接建立之后执行send方法发送数据
+        let data = {
+          action:"initChatList",//sendMsg
+          uid:this.myId,
+          toid:"",
+          msg:"初始化",
+          date:""
+        }
+        this.websocketsend(JSON.stringify(data));
+      },
+      websocketonerror(){//连接建立失败重连
+        this.initWebSocket();
+      },
+      websocketonmessage(e){ //数据接收
+        const redata = JSON.parse(e.data);
+        console.log(e.data)
+      },
+      websocketsend(Data){//数据发送
+        this.websock.send(Data);
+      },
+      websocketclose(e){  //关闭
+        console.log('断开连接',e);
+      },
+      setChatList(obj){
+        for(var i=0;i<=this.chatUserList.length;i++){
+          if(chatUserList[i].uid==obj.uid){
+             chatUserList.splice(i,1);
+             break;
+          }
+        }
+        chatUserList.unshift(obj);
+      }
     }
   };
 </script>
@@ -400,6 +354,7 @@
   width:21vw;
   height:10vh;
   margin-top:10px;
+  margin-left: 5px;
 
 }
 
