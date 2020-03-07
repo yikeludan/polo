@@ -2,7 +2,7 @@
 
   <div>
     <el-container style="height: 100vh">
-      <el-aside style="width: 22vw">
+      <el-aside style="width: 22vw" >
         <div class = "searchText">
             <div class = "searchText_input"><el-input class="elin-inputZD1" v-model="input" placeholder="请输入内容"></el-input></div>
             <div class = "searchText_button">
@@ -45,6 +45,40 @@
               </div>
             </div>
 
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
+
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
+
             <div class="oneChatList">
               <div class="chatHead">
                 <el-avatar :size="35">
@@ -73,6 +107,109 @@
               <div class="chatDate">3-25 16:43
               </div>
             </div>
+
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
+            <div class="oneChatList">
+              <div class="chatHead">
+                <el-avatar :size="35">
+                  <img src="https://s1.pstatp.com/ee/web-client/static/img/file_zip_msg.9d62b946.png"/>
+                </el-avatar>
+              </div>
+              <div class="chatMessage">
+                <div class="chatName">绘画盒子</div>
+                <div class="chatMs">[飞书机器人]撒旦</div>
+              </div>
+              <div class="chatDate">3-25 16:43
+              </div>
+            </div>
+
+
 
 
 
@@ -201,99 +338,30 @@
 
 <style>
 
-  .el-menu-vertical-demo {
-    min-height: 100vh;
-
-  }
 
 
   .el-aside {
     background-color: white;
     color: #333;
-    position:relative;
-  }
-
-  .el-main {
-    background-color: #E9EEF3;
-
-  }
-
-  body > .el-container {
-    margin-bottom: 40px;
-  }
-  .el-menu-item{
-    color:#5cb87a;
-  }
-  .is-active{
-    color:#5cb87a;
-
-  }
-  .aa{
-    color:#5cb87a;
-  }
-
-
-  .ss{
-    position:relative;
-    left:-30px;
+    line-height: 1px;
+    text-align: left;
   }
 
 
 
 
-  .flex-container{
-    display:flex;
-    flex-direction:row;
-    width:70vw;
-    line-height:60px;
-    justify-content:space-around;
-  }
 
-  .flex-container4{
-    display:flex;
-    flex-direction:row;
-    width:70vw;
-    justify-content:space-around;
-  }
-  .flex-container1{
-    display:flex;
-    flex-direction:row;
-    width:70vw;
-    margin-left: 6px;
-    line-height:60px;
-    justify-content:space-around;
-  }
 
-  .elin-inputZD /deep/ .el-input__inner{
-    width:200px;
-    border:1px solid #5cb87a;
-    color:#5cb87a;
-  }
 
-  .dataZD /deep/ .el-input__inner{
-    width:200px;
-    border:1px solid #5cb87a;
-    color:#5cb87a;
-  }
-  .el-picker-panel{
-    color:#5cb87a;
-  }
-  .el-button--primary{
-    background: #5cb87a;
-    border-color:#5cb87a;
-  }
 
-  .el-select-dropdown__item{
-    color:#5cb87a;
-  }
-  .el-popper{
-    margin-top: -15px;
-  }
+
+
+
+
  .searchText{
-    position:absolute;
-    top:10px;
-   left: 1vw;
 
+   margin-top:10px;
+   margin-left: 5px;
 
  }
 
@@ -301,18 +369,6 @@
     float:left;
     width:15vw;
     height: 5vh;
-  }
-  .elin-inputZD1 /deep/ .el-input__inner{
-    width:200px;
-    border:1px solid #5cb87a;
-    color:#5cb87a;
-    border-radius:50px;
-  }
-.chat_2_1 /deep/ .el-input{
-  height:500px;
-}
-  .upButton /deep/ .el-button{
-    color:#5cb87a;
   }
 
 
@@ -325,11 +381,9 @@
     color:black;
   }
 .chatUserList{
-  position:absolute;
-  top:50px;
+
   width:257px;
   height:90vh;
-  left:10px;
   overflow: hidden;
 
 }
@@ -361,27 +415,34 @@
 
 .chatMessage{
   float:left;
-  width:11vw;
-  height:7vh;
+  width:130px;
+  height:40px;
+  margin-left: 5px;
 
 }
 .chatDate{
   float:left;
-  width:5.5vw;
-  height:3vh;
-  margin-top: 8px;
+  width:60px;
+  height:15px;
+  margin-top:12px;
   font-size:12px;
   color:gray;
 
 }
 .chatName{
   font-size:12px;
-  margin-top: 5px;
+  width:100px;
+  height:10px;
+  margin-top: 10px;
+
 }
 .chatMs{
   font-size:11px;
-  margin-top: 5px;
+  margin-top: 7px;
   color:gray;
+  width:100px;
+  height:10px;
+
 
 }
 .header{
@@ -480,6 +541,7 @@
     margin-top:10px;
     width:700px;
     height:50px;
+    margin-right:-20px;
     border:1px solid #dee0e3;
     line-height:20px;
     padding-left:10px;
