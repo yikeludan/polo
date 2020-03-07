@@ -12,6 +12,7 @@ const Op = Sequelize.Op;
 
 
 router.post('/user/register',async (ctx,next)=>{
+   // global.pub.publish("channel1", "123")
     const body = ctx.request.body;
     const obj ={
         queryType:'SELECTALL',

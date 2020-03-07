@@ -38,6 +38,33 @@ function aa(){
         }
     })
     console.log(whereSql+whereSqlList.join(' and ').toString())
+
+
+    var data =[
+        {_id:"111",name:"aaa",age:"23"},
+        {_id:"222",name:"bbb",age:"25"},
+        {_id:"333",name:"ccc",age:"27"}
+    ];
+    var zd="222";
+    for(var i=0;i<=data.length;i++){
+        if(data[i]._id==zd){
+            data.splice(i,1);
+            break;
+        }
+    }
+    console.log(data);
+
+    for(var i = 0;i<100;i++){
+        console.log(Math.ceil(Math.random()*5))
+              // 获取从1到10的随机整数 ，取0的概率极小。
+
+    }
+    if (typeof(data[5]) == "undefined") {
+        console.log(1)
+    }else{
+        console.log(2)
+
+    }
 }
 
 aa()
