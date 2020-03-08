@@ -1,3 +1,37 @@
+const redis = require("redis");
+var util = require('util');
+
+const executiveBusiness = redis.createClient(6379, '139.196.89.179');
+
+key="game:taskIDList";
+aaaa();
+function aaaa(){
+    var obj = {
+        id :1,
+        name:"kami"
+    }
+    var s = JSON.stringify(obj)
+    executiveBusiness.rpush(key,s,function(err,res){
+        if(err){
+            console.log(err);
+        } else{
+            console.log("333"+util.inspect(res));
+        }
+
+    });
+
+
+
+    executiveBusiness.lrange(key,0,13,function(err,res){
+        if(err){
+            console.log(err);
+        } else{
+            console.log(util.inspect(res));
+        }
+    });
+}
+
+
 function aa(){
     const obj ={};
     const ggg = 'zb'
@@ -54,17 +88,7 @@ function aa(){
     }
     console.log(data);
 
-    for(var i = 0;i<100;i++){
-        console.log(Math.ceil(Math.random()*5))
-              // 获取从1到10的随机整数 ，取0的概率极小。
 
-    }
-    if (typeof(data[5]) == "undefined") {
-        console.log(1)
-    }else{
-        console.log(2)
-
-    }
 }
 
 aa()

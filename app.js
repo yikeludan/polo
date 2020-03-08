@@ -4,6 +4,7 @@ const Koa = require('koa')
 
 
 const path = require('path')
+var cors = require('koa2-cors');
 
 const parse = require('koa-bodyparser')
 const {catchError,globalUser} = require('./mid/exception')
@@ -16,6 +17,7 @@ const appWs = require('./mid/websocket')
 const app = new Koa();
 app.use(catchError)
 app.use(parse())
+app.use(cors());
 
 
 
