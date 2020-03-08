@@ -2,6 +2,7 @@ const Router = require('koa-router')
 const {User} = require('../model/user')
 const router = new Router();
 const {db}  =require('../mid/db')
+
 const {execPool} =require('../mid/rawdb')
 const Sequelize = require('sequelize')
 

@@ -1,6 +1,28 @@
 <template>
 
   <div>
+
+    <audio src="http://img95.699pic.com/music_sound_effect/280/804/5db15554c94ec.mp3" id="myaudio"   hidden="true"/>
+
+    <div class = "msgBox">
+      <div class = "msgBox1">
+        <el-avatar :size="45">
+          <img src="https://sf3-ttcdn-tos.pstatp.com/img/lark.avatar/da66000e46346df6b51c~72x72.webp"/>
+        </el-avatar>
+      </div>
+      <div class = "msgBox2">
+        <div class = "msgBox21">
+         一颗卤蛋想添加你为好友
+        </div>
+        <div class = "msgBox22">
+          <span class="sp1">  <el-button type="success" icon="el-icon-check" circle></el-button>
+</span><span class="sp2">  <el-button type="danger" icon="el-icon-close" circle></el-button>
+</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="fffff"></div>
     <el-container style="height: 100vh">
       <el-aside style="width: 22vw" >
         <div class = "searchText">
@@ -26,7 +48,7 @@
               </div>
               <div class="chatMessage">
                 <div class="chatName">{{item.name}}</div>
-                <div class="chatMs">{{item.msg}}</div>
+                <div class="chatMs">{{item.leftMsg}}</div>
               </div>
               <div class="chatDate">{{item.date}}
               </div>
@@ -107,6 +129,7 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: 'Chat',
 
@@ -115,6 +138,14 @@
       return {
         myId:"1",
         toId:"2",
+        aa:[],
+        currentMyChatUser:{
+          name:"",
+          uid:"",
+          url:"",
+          myId:"",
+          toId:"",
+        },
         currentChatUser:{
           name:"",
           uid:"",
@@ -125,6 +156,7 @@
         chatUserList:[{
           url:"https://sf3-ttcdn-tos.pstatp.com/img/lark.avatar/da66000e46346df6b51c~72x72.webp",
           name:"绘画盒子",
+          leftMsg:"121",
           msg:"撒旦",
           uid:"",
           date:"3-27 16:35",
@@ -136,8 +168,8 @@
             msg:"撒旦",
             date:"3-27 16:35",
             id:'ffff',
+            leftMsg:"121",
             uid:"",
-
           }],
         isCollapse: true,
         textarea1:'',
@@ -145,6 +177,8 @@
         input:"",
         scroll:null,
         chatMsgBoxDom:null,
+        myaudio:"",
+        msgBox:"",
         testMsg:'飞书是真正的一站式企业沟通与协作平台,整合即时沟通、日历、音视频会议、在线文档、云盘、'
       };
     },
@@ -157,6 +191,10 @@
     mounted(){
       const chatScroList = document.querySelector(".chatScroList")
       const scroll =   document.querySelector(".chat_1_1")
+      const msgBox = document.querySelector(".msgBox");
+      const myaudio =document.getElementById("myaudio");
+      this.myaudio = myaudio;
+      this.msgBox = msgBox;
       chatScroList.addEventListener('scroll',function(){
         console.log("a")
       })
@@ -164,9 +202,25 @@
       scroll.scrollTop = scroll.scrollHeight;
       this.chatMsgBoxDom = scroll;
       //this.pushChatBox()
+      this.getChatUserList()
 
     },
     methods: {
+      getChatUserList(){
+        var that = this;
+        axios.get('http://127.0.0.1:5000/api/user/getChatUserList',{       // 还可以直接把参数拼接在url后边
+          params:{
+            myId:this.myId
+          }
+        }).then(function(res){
+          if(res.data.length !=0){
+            that.chatUserList = JSON.parse(res.data)
+          }
+
+        }).catch(function (error) {
+           console.log(error);
+        });
+      },
       toggle(index){
         this.currentChatUser.name = this.chatUserList[index].name;
         this.currentChatUser.url = this.chatUserList[index].url;
@@ -182,10 +236,38 @@
           msg:"初始化1",
           date:""
         }
-        this.websocketsend(JSON.stringify(data));
+        //this.websocketsend(JSON.stringify(data));
+      },
+      pushMsg(obj){
+        var div = document.createElement('div');
+        var textNode  = document.createTextNode(obj.msg)
+        div.className+=" chatMsBox";
+        if(this.textarea1.length<="43"&&this.textarea1.length>=35){
+          div.style.width = "600px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="35"&&this.textarea1.length>=20){
+          div.style.width = "500px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="20"&&this.textarea1.length>=10){
+          div.style.width = "400px"
+          div.style.height = "30px"
+        }
+        if(this.textarea1.length<="10"&&this.textarea1.length>="7"){
+          div.style.width = "150px"
+          div.style.height = "30px"
+        }
+
+        if(this.textarea1.length<="7"){
+          div.style.width = "100px"
+          div.style.height = "30px"
+        }
+        div.appendChild(textNode)
+        this.chatMsgBoxDom.appendChild(div)
+        this.chatMsgBoxDom.scrollTop = this.chatMsgBoxDom.scrollHeight;
       },
       sendMs(value){
-
         var div = document.createElement('div');
         var textNode  = document.createTextNode(this.textarea1)
         div.className+=" chatMsBox";
@@ -223,8 +305,15 @@
           date:""
         }
         this.textarea1 =""
+       // this.websocketsend(JSON.stringify(data));
 
-        this.websocketsend(JSON.stringify(data));
+        this.pushApplyDIv();
+        this.getFriends();
+      },
+      pushApplyDIv(){
+        console.log(this.msgBox)
+        this.msgBox.className='msgBoxAn'
+        this.myaudio.play();
       },
       pushChatBox(){
         const chatList = document.querySelectorAll(".oneChatList")
@@ -247,7 +336,7 @@
       },
 
       initWebSocket(){ //初始化weosocket
-        const wsuri = "ws://139.196.89.179:3030?id="+this.myId+"&toid=2";
+        const wsuri = "ws://127.0.0.1:3030?id="+this.myId+"&toid=2";
         this.websock = new WebSocket(wsuri);
         this.websock.onmessage = this.websocketonmessage;
         this.websock.onopen = this.websocketonopen;
@@ -285,6 +374,19 @@
           }
         }
         chatUserList.unshift(obj);
+      },
+      getFriends(){
+        var that = this;
+        axios.get('http://127.0.0.1:5000/api/user/myfriendMsg',{       // 还可以直接把参数拼接在url后边
+          params:{
+            title:'眼镜'
+          }
+        }).then(function(res){
+          that.aa = res.data
+
+        }).catch(function (error) {
+          console.log(error);
+        });
       }
     }
   };
@@ -503,5 +605,80 @@
     padding-top: 5px;
     border-radius: 10px;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+  }
+  .fffff{
+    position:absolute;
+    width:100vw;
+    height:100vh;
+    background:black;
+    z-index: 5000;
+    opacity:0.4;
+    display:none;
+    filter:alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+  }
+  .span1{
+    background:firebrick;
+    width:30px;
+    height:30px;
+  }
+
+   .msgBoxAn{
+     position:absolute;
+     width:300px;
+     height:100px;
+     z-index:5000;
+     left:75vw;
+     top:60vh;
+     border-radius: 10px;
+     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+     transform: translateX(-30px);
+     transition: all 0.5s;
+     transition-timing-function:ease-out;
+   }
+  .msgBox{
+    position:absolute;
+    width:300px;
+    height:100px;
+    z-index:5000;
+    left:100vw;
+    top:60vh;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+
+  }
+  .msgBox1{
+    width:40px;
+    height:40px;
+    float:left;
+    margin-top:25px;
+    margin-left:25px;
+
+  }
+  .msgBox2{
+    float:left;
+    width:200px;
+    height:70px;
+
+  }
+
+  .msgBox21{
+    width:200px;
+    line-height: 40px;
+    text-align: center;
+
+  }
+  .msgBox22{
+    width:200px;
+    height:30px;
+
+  }
+  .msgBox3{
+    float:left
+  }
+  .sp1{
+    margin-left: 50px;
+  }
+  .sp2{
+    margin-left: 40px;
   }
 </style>

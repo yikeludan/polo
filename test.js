@@ -3,15 +3,15 @@ var util = require('util');
 
 const executiveBusiness = redis.createClient(6379, '139.196.89.179');
 
-key="game:taskIDList";
-aaaa();
+key="game:taskIDList1";
+//aaaa();
 function aaaa(){
     var obj = {
-        id :1,
+        id :444,
         name:"kami"
     }
     var s = JSON.stringify(obj)
-    executiveBusiness.rpush(key,s,function(err,res){
+    executiveBusiness.lpush(key,s,function(err,res){
         if(err){
             console.log(err);
         } else{
@@ -22,11 +22,15 @@ function aaaa(){
 
 
 
-    executiveBusiness.lrange(key,0,13,function(err,res){
+    executiveBusiness.lrange(key,0,-1,function(err,res){
         if(err){
             console.log(err);
         } else{
-            console.log(util.inspect(res));
+
+           // const b = JSON.stringify(res)
+          // const d = JSON.parse(a)
+
+            console.log(res[0].id);
         }
     });
 }
@@ -92,3 +96,12 @@ function aa(){
 }
 
 aa()
+
+var jsonString = '[ {"name":"天鸽"},{"name":"梅花"},{"name":"台风"} ]';
+
+// console.log(JSON.parse(jsonString));
+var jsArr = JSON.parse(jsonString);
+
+jsArr.push({"name":"帕卡"});
+
+console.log(jsArr[0].name);
