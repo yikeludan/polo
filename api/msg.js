@@ -67,7 +67,7 @@ router.get('/api/user/applyFriend',async (ctx,next)=>{
         if(obj.name === ctx.query.name){
             resObj  = obj
         }
-        if(resMyObj.myId === ctx.query.myId){
+        if(resMyObj.uid === ctx.query.myId){
             resMyObj  = obj
         }
     })

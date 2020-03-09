@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/api/msg.js" beforeDir="false" afterPath="$PROJECT_DIR$/api/msg.js" afterDir="false" />
-    </list>
+    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -19,8 +17,8 @@
       <file leaf-file-name="msg.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/msg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
-              <caret line="71" column="24" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="24" />
+            <state relative-caret-position="270">
+              <caret line="74" column="17" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -28,8 +26,8 @@
       <file leaf-file-name="json.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/untl/json.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -56,7 +54,7 @@
         <entry file="file://$PROJECT_DIR$/mid/websocket.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="159">
-              <caret line="26" column="43" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="43" />
+              <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -101,8 +99,8 @@
       <find>json</find>
       <find>sennd</find>
       <find>chat</find>
-      <find>send</find>
       <find>pub</find>
+      <find>send</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,8 +158,8 @@
         <option value="$PROJECT_DIR$/static/Chat.vue" />
         <option value="$PROJECT_DIR$/untl/json.js" />
         <option value="$PROJECT_DIR$/service/msgService.js" />
-        <option value="$PROJECT_DIR$/mid/websocket.js" />
         <option value="$PROJECT_DIR$/api/msg.js" />
+        <option value="$PROJECT_DIR$/mid/websocket.js" />
       </list>
     </option>
   </component>
@@ -298,12 +296,12 @@
       <workItem from="1583662365187" duration="10557000" />
       <workItem from="1583683535300" duration="80000" />
       <workItem from="1583687969656" duration="1957000" />
-      <workItem from="1583736353266" duration="18129000" />
+      <workItem from="1583736353266" duration="18413000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="259947000" />
+    <option name="totallyTimeSpent" value="260231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -316,7 +314,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32920355" />
       <window_info id="Structure" order="1" sideWeight="0.50252527" side_tool="true" weight="0.16759333" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.09751773" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.28723404" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -682,13 +680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/untl/json.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mid/redis.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -703,6 +694,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/untl/json.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service/msgService.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -713,14 +711,14 @@
     <entry file="file://$PROJECT_DIR$/mid/websocket.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
-          <caret line="26" column="43" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="43" />
+          <caret line="26" column="64" selection-start-line="26" selection-start-column="64" selection-end-line="26" selection-end-column="64" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/msg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="71" column="24" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="24" />
+        <state relative-caret-position="270">
+          <caret line="74" column="17" selection-start-line="74" selection-start-column="13" selection-end-line="74" selection-end-column="17" />
         </state>
       </provider>
     </entry>
