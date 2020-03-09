@@ -1,7 +1,7 @@
 const Router = require('koa-router')
 const router = new Router();
-const{lpush,setRedis,getRedis,getlRange} =require('../mid/redis')
-const MsgService = require('../service/MsgService')
+const {lpush,setRedis,getRedis,getlRange} =require('../mid/redis')
+const MsgService = require('../service/msgService')
 const msgService = new MsgService()
 const json = require('../untl/json')
 
