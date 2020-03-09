@@ -19,8 +19,8 @@
       <file leaf-file-name="msg.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/msg.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="296">
+              <caret line="71" column="24" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -37,8 +37,8 @@
       <file leaf-file-name="msgService.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service/msgService.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+            <state relative-caret-position="142">
+              <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -55,17 +55,8 @@
       <file leaf-file-name="websocket.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mid/websocket.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="websocket1.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mid/websocket1.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="13" column="3" lean-forward="true" selection-start-line="13" selection-start-column="3" selection-end-line="13" selection-end-column="3" />
+            <state relative-caret-position="159">
+              <caret line="26" column="43" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -109,8 +100,8 @@
       <find>forEach</find>
       <find>json</find>
       <find>sennd</find>
-      <find>send</find>
       <find>chat</find>
+      <find>send</find>
       <find>pub</find>
     </findStrings>
   </component>
@@ -206,6 +197,16 @@
               <item name="polo" type="b2602c69:ProjectViewProjectNode" />
               <item name="polo" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="polo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="polo" type="462c0819:PsiDirectoryNode" />
+              <item name="seqModel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="polo" type="b2602c69:ProjectViewProjectNode" />
+              <item name="polo" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -297,24 +298,25 @@
       <workItem from="1583662365187" duration="10557000" />
       <workItem from="1583683535300" duration="80000" />
       <workItem from="1583687969656" duration="1957000" />
-      <workItem from="1583736353266" duration="17041000" />
+      <workItem from="1583736353266" duration="18129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="258859000" />
+    <option name="totallyTimeSpent" value="259947000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49747476" visible="true" weight="0.18030183" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49747476" visible="true" weight="0.18030183" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50277996" side_tool="true" weight="0.70567375" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32920355" />
       <window_info id="Structure" order="1" sideWeight="0.50252527" side_tool="true" weight="0.16759333" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.30851063" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.09751773" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -701,24 +703,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mid/websocket.js">
+    <entry file="file://$PROJECT_DIR$/service/msgService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        <state relative-caret-position="142">
+          <caret line="35" column="5" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service/msgService.js">
+    <entry file="file://$PROJECT_DIR$/mid/websocket.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
-          <caret line="33" column="8" selection-start-line="33" selection-start-column="8" selection-end-line="33" selection-end-column="8" />
+        <state relative-caret-position="159">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api/msg.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="296">
+          <caret line="71" column="24" selection-start-line="71" selection-start-column="20" selection-end-line="71" selection-end-column="24" />
         </state>
       </provider>
     </entry>

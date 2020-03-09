@@ -62,14 +62,19 @@ router.get('/api/user/getAllMyAndYouChatList',async (ctx,next)=>{
 router.get('/api/user/applyFriend',async (ctx,next)=>{
     ctx.query.name = '王总'
     let resObj = null;
+    let resMyObj = null;
     json.forEach(obj => {
         if(obj.name === ctx.query.name){
             resObj  = obj
         }
+        if(resMyObj.myId === ctx.query.myId){
+            resMyObj  = obj
+        }
     })
-    resObj.action = 'apply'
-    resObj.toId = ctx.query.myId
-    msgService.applyFriend(resObj)
+
+    resMyObj.toId = resObj.uid
+    resMyObj.action = 'apply'
+    msgService.applyFriend(resMyObj)
     ctx.body = 123
 
 })

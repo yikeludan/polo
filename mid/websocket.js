@@ -24,9 +24,8 @@ sub.on("message", function (channel, message) {
 
     if(typeof(data.action) != "undefined"){
         if(data.action === 'apply'){
-            if (typeof(global.user[data.uid]) != "undefined") {
-
-                global.user[data.uid].websocket.send(message);
+            if (typeof(global.user[data.toId]) != "undefined") {
+                global.user[data.toId].websocket.send(message);
             }
         }
         if(data.action === 'sendMsg'){
