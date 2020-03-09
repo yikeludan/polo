@@ -23,6 +23,11 @@ sub.on("message", function (channel, message) {
     var data = JSON.parse(message)
 
     if(typeof(data.action) != "undefined"){
+        if(data.action === 'agree'){
+            if (typeof(global.user[data.wsId]) != "undefined") {
+                global.user[data.wsId].websocket.send(message);
+            }
+        }
         if(data.action === 'apply'){
             if (typeof(global.user[data.toId]) != "undefined") {
                 global.user[data.toId].websocket.send(message);

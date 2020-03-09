@@ -23,26 +23,18 @@ router.get('/api/user/sendMsg',async (ctx,next)=>{
 //获取我的聊天列表
 router.get('/api/user/getChatUserList',async (ctx,next)=>{
     console.log(ctx.query.myId)
-    var key = "chatUserList-"+ctx.query.myId
+    var key = "chatMyff33345"+ctx.query.myId
     //var key = "game:taskIDList1"
     let list =  await msgService.getAllMyChatList(key)
-    var obj = {
-        url:"https://internal-api-lark-file.feishu.cn/api/avatar/v1/da5b0013821beadb7860/72x72.webp",
-        name:"绘画盒子1",
-        msg:"撒旦",
-        msgId:"",
-        date:"3-27 16:35",
-        id:'ffff',
-        leftMsg:"121",
-        uid:"333",
-        toId:"444"
-    }
-    let list1 = [];
-    list1.push(obj);
+    let resList = []
+    list.forEach(obj =>{
+        const j = JSON.parse(obj)
+        resList.push(j)
+    })
 
 
 
-    ctx.body =JSON.stringify(list1)
+    ctx.body =resList
 })
 //获取我的好友列表
 router.get('/api/user/getFriendChatList',async (ctx,next)=>{
@@ -81,8 +73,21 @@ router.get('/api/user/applyFriend',async (ctx,next)=>{
 
 //同意好友
 router.get('/api/user/agreeFriend',async (ctx,next)=>{
-    msgService.agreeFriend(ctx.query)
+    let resGuestObj = null;
+    let resOwnObj = null;
+    json.forEach(obj => {
+        if(obj.uid === ctx.query.toId){
+            resGuestObj  = obj
+        }
+        if(obj.uid === ctx.query.myId){
+            resOwnObj  = obj
+        }
+    })
+    resGuestObj.action = 'agree'
+    resOwnObj.action  = 'agree'
+    msgService.agreeFriend(resGuestObj,resOwnObj)
     ctx.body = ctx.query;
+
 })
 
 module.exports = router

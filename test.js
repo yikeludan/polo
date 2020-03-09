@@ -3,34 +3,20 @@ var util = require('util');
 
 const executiveBusiness = redis.createClient(6379, '139.196.89.179');
 
-key="game:taskIDList1";
-//aaaa();
+key="chatMyff331";
+aaaa();
 function aaaa(){
-    var obj = {
-        id :444,
-        name:"kami"
-    }
-    var s = JSON.stringify(obj)
-    executiveBusiness.lpush(key,s,function(err,res){
-        if(err){
-            console.log(err);
-        } else{
-            console.log("333"+util.inspect(res));
-        }
-
-    });
-
-
-
     executiveBusiness.lrange(key,0,-1,function(err,res){
         if(err){
             console.log(err);
         } else{
-
-           // const b = JSON.stringify(res)
-          // const d = JSON.parse(a)
-
-            console.log(res[0].id);
+            let list = []
+            res.forEach(obj =>{
+                let c = JSON.parse(obj)
+                list.push(c)
+            })
+            console.log(list[0].name)
+            console.log(res)
         }
     });
 }
