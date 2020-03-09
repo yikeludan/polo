@@ -3,6 +3,7 @@ const Koa1 = require("koa");
 const {sub,pub} = require('./redis')
 const app1 = WebSocket(new Koa1());
 const ctxs1 = {};
+
 const chatList = ['channel1','channle2','channle3','channle4']
 
 const boxList = ['channel5','channle6','channle7']
@@ -18,27 +19,34 @@ sub.on("subscribe", function (channel, count) {
 });
 //在pub的时候会触发 message事件，我们的所有业务处理基本就是靠监听它了
 sub.on("message", function (channel, message) {
+
     var data = JSON.parse(message)
-    if(data.action === 'sendMsg'){
-        if (typeof(global.user[data.toid]) != "undefined") {//在线用户存在
-            var obj = {
-                action:"sendMsg",
-                msg :data.msg,
+
+    if(typeof(data.action) != "undefined"){
+        if(data.action === 'apply'){
+            if (typeof(global.user[data.uid]) != "undefined") {
+
+                global.user[data.uid].websocket.send(message);
             }
-            console.log("obj = "+obj)
-            global.user[data.toid].websocket.send(JSON.stringify(obj));
+        }
+        if(data.action === 'sendMsg'){
+            console.log("sendMsg")
+            global.user[data.uid].websocket.send("12333");
+            return;
+            if (typeof(global.user[data.toid]) != "undefined") {//在线用户存在
+                var obj = {
+                    action:"sendMsg",
+                    msg :data.msg,
+                    uid:data.uid,
+                    toId:data.toid,
+                    msgId:""
+                }
+                global.user[data.toid].websocket.send(JSON.stringify(obj));
+            }
         }
     }
-    /* if (typeof(global.user[5]) == "undefined") {
-         console.log(1)
-     }else{
-         console.log(2)
 
-     }*/
-   /* const array = message.split(",")
-    const id = array[1];
-    global.user[id].websocket.send(array[0]);
-    console.log("sub channel " + channel + ": " + array[0]+"--"+array[1]);*/
+
 });
 
 sub.on("error", function (err) {
@@ -55,7 +63,8 @@ pub.on("error", function (err) {
 /* 实现简单的接发消息 */
 app1.ws.use((ctx, next) => {
     const query = ctx.request.query
-    global.user[query.id] =ctx
+    global.user[query.id] = ctx
+    ctxs1[query.id] = ctx
 
     ctx.websocket.on("message", (message) => {
         console.log(message)

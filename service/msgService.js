@@ -7,20 +7,22 @@ class MsgService{
         return list;
     }
     async getAllMyAndYouChatList(obj){
+
         let MytoYourKey = "chat"+obj.uid+"&&"+obj.toid
-        let list = await getlRange(MyChatListKey,0,-1)
+        let list = await getlRange(MytoYourKey,0,-1)
         return list;
     }
 
 
     async getAllMyFriendList(obj){
         let MytoYourKey = "chatOss"+obj.uid
-        let list = await getlRange(MyChatListKey,0,-1)
+        let list = await getlRange(MytoYourKey,0,-1)
         return list;
     }
 
     async sendMsg(obj){
         var message = JSON.stringify(obj)
+
         let MytoYourKey = "chat"+obj.uid+"&&"+obj.toid
         let MyChatListKey = "chatMy"+obj.uid
         //将信息发送给某人出去
@@ -31,7 +33,7 @@ class MsgService{
         //将信息存进我的聊天列表里
         rpush(MyChatListKey,obj)
     }
-    async applyFriend(obj){
+     applyFriend(obj){
         var message = JSON.stringify(obj)
         //将信息发送给某人出去
         const randomChannel = Math.ceil(Math.random()*3);
