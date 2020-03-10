@@ -34,18 +34,9 @@ sub.on("message", function (channel, message) {
             }
         }
         if(data.action === 'sendMsg'){
-            console.log("sendMsg")
-            global.user[data.uid].websocket.send("12333");
-            return;
-            if (typeof(global.user[data.toid]) != "undefined") {//在线用户存在
-                var obj = {
-                    action:"sendMsg",
-                    msg :data.msg,
-                    uid:data.uid,
-                    toId:data.toid,
-                    msgId:""
-                }
-                global.user[data.toid].websocket.send(JSON.stringify(obj));
+            if (typeof(global.user[data.toId]) != "undefined") {//在线用户存在
+               // console.log("ms = "+message)
+                global.user[data.toId].websocket.send(message);
             }
         }
     }

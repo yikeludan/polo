@@ -20,18 +20,23 @@ class MsgService{
         return list;
     }
 
-    async sendMsg(obj){
-        var message = JSON.stringify(obj)
+    async sendMsg(obj1,obj2){
+        //console.log(obj1)
+       // console.log(obj2)
 
-        let MytoYourKey = "chat"+obj.uid+"&&"+obj.toid
-        let MyChatListKey = "chatMy"+obj.uid
+        var message = JSON.stringify(obj1)
+
+        let MytoYourKey = "chat"+obj1.uid+"&&"+obj1.toid
+        let MyChatListKey = "chatMyff333456"+obj1.uid
+        let MyChatListKey1 = "chatMyff333456"+obj2.uid
+
         //将信息发送给某人出去
         const randomChannel = Math.ceil(Math.random()*3);
         pub.publish(chatList[randomChannel], message);
        //将信息存储到我与他的聊天记录里
-        lpush(MytoYourKey,obj)
+       // lpush(MytoYourKey,obj)
         //将信息存进我的聊天列表里
-        rpush(MyChatListKey,obj)
+        //rpush(MyChatListKey,obj)
     }
      applyFriend(obj){
         var message = JSON.stringify(obj)
@@ -44,8 +49,8 @@ class MsgService{
         obj2.wsId = obj1.uid
         var message = JSON.stringify(obj2)
        // let MytoYourKey = "chatOss"+obj.uid
-        let MyChatListKey1 = "chatMyff33345"+obj1.uid
-        let MyChatListKey2 = "chatMyff33345"+obj2.uid
+        let MyChatListKey1 = "chatMyff333456"+obj1.uid
+        let MyChatListKey2 = "chatMyff333456"+obj2.uid
         //将信息发送给某人出去
         const randomChannel = Math.ceil(Math.random()*3);
         pub.publish(chatList[randomChannel], message);

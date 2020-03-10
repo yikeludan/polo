@@ -15,17 +15,45 @@ router.get('/api/user/myfriendMsg',async (ctx,next)=>{
 //发送消息
 router.get('/api/user/sendMsg',async (ctx,next)=>{
     ctx.query.action = "sendMsg";
+    ctx.query.uid =  ctx.query.uid1
+    let str = ctx.query.msg
+    ctx.query.leftMsg = ctx.query.msg
+    if(ctx.query.msg.length>=10&&ctx.query.msg.length<=12){
+        str =  ctx.query.msg.slice(0,ctx.query.msg.length-6)
+        str+="..."
 
-    msgService.sendMsg(ctx.query)
+    }
+    if(ctx.query.msg.length>=13){
+        str =  ctx.query.msg.slice(0,6)
+        str+="..."
+    }
+    ctx.query.leftMsg = str;
+
+    let sendObj = null;
+    json.forEach(obj =>{
+        if(obj.uid === ctx.query.uid){
+            sendObj = obj;
+        }
+    })
+
+
+    sendObj.action = "sendMsg";
+    sendObj.msg = ctx.query.msg
+    sendObj.leftMsg = str;
+    sendObj.toId = ctx.query.toId;
+    ctx.query.uid = ctx.query.toId;
+    ctx.query.toId = "";
+    msgService.sendMsg(sendObj,ctx.query)
     ctx.body =ctx.query
 
 })
 //获取我的聊天列表
 router.get('/api/user/getChatUserList',async (ctx,next)=>{
     console.log(ctx.query.myId)
-    var key = "chatMyff33345"+ctx.query.myId
+    var key = "chatMyff333456"+ctx.query.myId
     //var key = "game:taskIDList1"
     let list =  await msgService.getAllMyChatList(key)
+    console.log(list)
     let resList = []
     list.forEach(obj =>{
         const j = JSON.parse(obj)
@@ -52,7 +80,7 @@ router.get('/api/user/getAllMyAndYouChatList',async (ctx,next)=>{
 
 //申请好友
 router.get('/api/user/applyFriend',async (ctx,next)=>{
-    ctx.query.name = '王总'
+    ctx.query.name = 'sb老祖'
     let resObj = null;
     let resMyObj = null;
     json.forEach(obj => {
