@@ -19,7 +19,7 @@
             .then(gotDevices)
             .catch(handleError);*/
         var pt = {
-            audio: true,
+            audio: {echoCancellation:true,noiseSuppression:true},
             video: true
         }
         navigator.mediaDevices.getUserMedia(pt).then(getMedia).catch(handleError);
