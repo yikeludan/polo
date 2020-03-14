@@ -9,6 +9,7 @@
 </body>
 </html>
 <script>
+    navigator.mediaDevices.getUserMedia({audio: true, video: true});
     if(!navigator.mediaDevices ||
         !navigator.mediaDevices.enumerateDevices){
         console.log('enumerateDevices is not supported!');
