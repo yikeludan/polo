@@ -10,7 +10,8 @@
 </html>
 <script>
     if(!navigator.mediaDevices || navigator.mediaDevices.enumerateDevices()){
-        console.log("enumerateDevices not found")
+
+        console.log("enumerateDevices not found"+navigator.mediaDevices)
     }else{
         navigator.mediaDevices.enumerateDevices().then(gotDevice).catch(handelError);
     }
