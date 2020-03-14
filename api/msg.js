@@ -53,7 +53,7 @@ router.get('/api/user/getChatUserList',async (ctx,next)=>{
     var key = "chatMyff333456"+ctx.query.myId
     //var key = "game:taskIDList1"
     let list =  await msgService.getAllMyChatList(key)
-    console.log(list)
+   // console.log(list)
     let resList = []
     list.forEach(obj =>{
         const j = JSON.parse(obj)
@@ -80,7 +80,7 @@ router.get('/api/user/getAllMyAndYouChatList',async (ctx,next)=>{
 
 //申请好友
 router.get('/api/user/applyFriend',async (ctx,next)=>{
-    ctx.query.name = 'sb老祖'
+    ctx.query.name = '王总'
     let resObj = null;
     let resMyObj = null;
     json.forEach(obj => {
@@ -94,6 +94,7 @@ router.get('/api/user/applyFriend',async (ctx,next)=>{
 
     resMyObj.toId = resObj.uid
     resMyObj.action = 'apply'
+    console.log("resMY = "+JSON.stringify(resMyObj))
     msgService.applyFriend(resMyObj)
     ctx.body = 123
 

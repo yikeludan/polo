@@ -9,12 +9,10 @@
 </body>
 </html>
 <script>
-    if(!navigator.mediaDevices || navigator.mediaDevices.enumerateDevices()){
-        navigator.mediaDevices.enumerateDevices().then(gotDevice).catch(handelError);
-
-       // console.log("enumerateDevices not found"+navigator.mediaDevices)
+    if(!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices()){
+        console.log("enumerateDevices not found"+navigator.mediaDevices)
     }else{
-       // navigator.mediaDevices.enumerateDevices().then(gotDevice).catch(handelError);
+       navigator.mediaDevices.enumerateDevices().then(gotDevice).catch(handelError);
     }
 
     function gotDevice(deviceInfos){

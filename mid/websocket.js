@@ -25,6 +25,7 @@ sub.on("message", function (channel, message) {
     if(typeof(data.action) != "undefined"){
         if(data.action === 'agree'){
             if (typeof(global.user[data.wsId]) != "undefined") {
+                console.log("data = "+data.wsId)
                 global.user[data.wsId].websocket.send(message);
             }
         }
