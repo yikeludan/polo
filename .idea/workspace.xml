@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/rtc.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/rtc.html" afterDir="false" />
-    </list>
+    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -37,8 +35,8 @@
       <file leaf-file-name="rtc.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/rtc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="62">
-              <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+            <state relative-caret-position="232">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -327,15 +325,16 @@
       <workItem from="1584002117634" duration="612000" />
       <workItem from="1584018926331" duration="9000" />
       <workItem from="1584166856433" duration="4998000" />
-      <workItem from="1584190853143" duration="3959000" />
+      <workItem from="1584190853143" duration="4259000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="300471000" />
+    <option name="totallyTimeSpent" value="300771000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49747476" weight="0.17871326" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -744,8 +743,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+        <state relative-caret-position="232">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="41" />
         </state>
       </provider>
     </entry>
