@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+111111111111111
+</body>
+</html>
+<script>
+    if(!navigator.mediaDevices || navigator.mediaDevices.enumerateDevices()){
+        console.log("enumerateDevices not found")
+    }else{
+        navigator.mediaDevices.enumerateDevices().then(gotDevice).catch(handelError);
+    }
+
+    function gotDevice(deviceInfos){
+        deviceInfos.forEach(device =>{
+            console.log(device.kind);
+            console.log(device.label);
+            console.log(device.deviceId);
+            console.log(device.groupId);
+
+        })
+    }
+
+
+    function handelError(error){
+     console.log("err = "+error.name+":"+error.message);
+    }
+
+
+</script>
