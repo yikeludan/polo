@@ -20,8 +20,12 @@
             .then(gotDevices)
             .catch(handleError);*/
         var pt = {
-            audio: true,
-            video: true
+            video: {
+                width:200,
+                height:600
+            },
+            audio: true
+
         }
         navigator.mediaDevices.getUserMedia(pt).then(getMedia).catch(handleError);
 
