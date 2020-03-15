@@ -46,7 +46,7 @@
    // navigator.mediaDevices.getUserMedia({audio: true, video: true});
    var filtersSelect = document.querySelector('select#filter');
    filtersSelect.onchange = function(){
-       videoplay.className = filtersSelect.value;
+       video.className = filtersSelect.value;
    }
    var video = document.getElementById('player');
     if(!navigator.mediaDevices ||
