@@ -19,8 +19,8 @@
       <file leaf-file-name="rtc.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/rtc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-230">
-              <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+            <state relative-caret-position="341">
+              <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -37,7 +37,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>barBox</find>
       <find>oBarBox</find>
       <find>oBar</find>
       <find>iBarH</find>
@@ -67,6 +66,7 @@
       <find>sendMsg</find>
       <find>updatePeer</find>
       <find>applyFriend</find>
+      <find>handleDataAvailable</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -265,12 +265,12 @@
       <workItem from="1584018926331" duration="9000" />
       <workItem from="1584166856433" duration="4998000" />
       <workItem from="1584190853143" duration="6300000" />
-      <workItem from="1584252794480" duration="4815000" />
+      <workItem from="1584252794480" duration="7676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="307627000" />
+    <option name="totallyTimeSpent" value="310488000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -283,7 +283,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32920355" />
       <window_info id="Structure" order="1" sideWeight="0.50252527" side_tool="true" weight="0.16759333" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" weight="0.5567376" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.15602838" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
@@ -683,8 +683,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-230">
-          <caret line="54" column="4" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+        <state relative-caret-position="341">
+          <caret line="83" column="23" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
         </state>
       </provider>
     </entry>

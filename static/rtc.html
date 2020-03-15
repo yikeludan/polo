@@ -36,8 +36,14 @@
         <option value="invert">Invert</option>
         <option value="sepia">sepia</option>
     </select>
+    <button id="record">Start Record</button>
+    <button id="recplay" disabled>Play</button>
+    <button id="download" disabled>Download</button>
+
 </div>
 <video autoplay playsinline id="player" ></video>
+<video  playsinline id="recplayer" ></video>
+
 </body>
 </html>
 
@@ -48,6 +54,58 @@
        video.className = filtersSelect.value;
    }
    var video = document.getElementById('player');
+   var buffer;
+   //record
+   var recvideo = document.querySelector('video#recplayer');
+   var btnRecord = document.querySelector('button#record');
+   var btnPlay = document.querySelector('button#recplay');
+   var btnDownload = document.querySelector('button#download');
+   var mediaRecorder;
+   btnRecord.onclick = () =>{
+       if(btnRecord.textContent === 'Start Record'){
+           startRecord();
+           btnRecord.textContent = 'Stop Record';
+          // btnPlay.disabled = true;
+          // btnDownload.disabled = true;
+       }else{
+
+           stopRecord();
+           btnRecord.textContent = 'Start Record';
+         //  btnPlay.disabled = false;
+          // btnDownload.disabled = false;
+
+       }
+   }
+   btnPlay.onclick =()=>{
+       var blob = new Blob(buffer,{type:'video/webm'})
+       recvideo.src = window.URL.createObjectURL(blob)
+       recvideo.srcObject = null;
+       recvideo.controls  = true;
+       recvideo.play();
+   }
+   function startRecord(){
+       buffer = [];
+       var options = {
+           mimeType:'video/webm;codecs=vp8'
+       }
+       if(!MediaRecorder.isTypeSupported(options.mimeType)){
+           console.log("mimeType 不支持")
+           return;
+       }
+       mediaRecorder = new MediaRecorder(window.stream, options);
+       mediaRecorder.ondataavailable = handleDataAvailable;
+       mediaRecorder.start(10)//时间片
+
+   }
+   function handleDataAvailable(e){
+       if(e&&e.data&&e.data.size>0){
+           buffer.push(e.data)
+       }
+   }
+
+   function stopRecord(){
+       mediaRecorder.stop()
+   }
 
 
    function start(){
@@ -72,6 +130,7 @@
     }
    }
     function getMedia(stream) {
+       window.stream = stream;
         video.srcObject = stream;
     }
 
