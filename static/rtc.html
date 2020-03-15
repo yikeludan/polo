@@ -78,6 +78,8 @@
    }
    btnPlay.onclick =()=>{
        var blob = new Blob(buffer,{type:'video/webm'})
+       console.log(blob)
+
        recvideo.src = window.URL.createObjectURL(blob)
        recvideo.srcObject = null;
        recvideo.controls  = true;
