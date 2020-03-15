@@ -43,19 +43,19 @@
 
 <script src="adapter-latest.js"></script>
 <script>
-   // navigator.mediaDevices.getUserMedia({audio: true, video: true});
    var filtersSelect = document.querySelector('select#filter');
    filtersSelect.onchange = function(){
        video.className = filtersSelect.value;
    }
    var video = document.getElementById('player');
+
+
+   function start(){
     if(!navigator.mediaDevices ||
         !navigator.mediaDevices.enumerateDevices){
         console.log('enumerateDevices is not supported!');
     }else {
-      /*  navigator.mediaDevices.enumerateDevices()
-            .then(gotDevices)
-            .catch(handleError);*/
+
         var pt = {
             video: {
                 width:300,
@@ -70,6 +70,7 @@
         navigator.mediaDevices.getUserMedia(pt).then(getMedia).catch(handleError);
 
     }
+   }
     function getMedia(stream) {
         video.srcObject = stream;
     }
@@ -87,5 +88,7 @@
     function handleError(err){
         console.log(err.name + " : " + err.message);
     }
+
+    start();
 
 </script>
