@@ -65,14 +65,14 @@
        if(btnRecord.textContent === 'Start Record'){
            startRecord();
            btnRecord.textContent = 'Stop Record';
-          // btnPlay.disabled = true;
-          // btnDownload.disabled = true;
+          btnPlay.disabled = true;
+          btnDownload.disabled = true;
        }else{
 
            stopRecord();
            btnRecord.textContent = 'Start Record';
-         //  btnPlay.disabled = false;
-          // btnDownload.disabled = false;
+           btnPlay.disabled = false;
+           btnDownload.disabled = false;
 
        }
    }
