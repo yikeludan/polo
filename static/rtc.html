@@ -145,6 +145,7 @@
     }
    }
     function getMedia(stream) {
+       console.log(typeof stream);
        window.stream = stream;
         video.srcObject = stream;
     }
