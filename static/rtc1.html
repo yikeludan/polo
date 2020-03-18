@@ -30,17 +30,21 @@
 </style>
 <body>
 
-<div>
-    <video id="localVideo" autoplay playsinline></video>
-    <video id="remoteVideo" autoplay playsinline></video>
+
+<div id="preview">
+    <div >
+        <h2>Local:</h2>
+        <video id="localvideo" autoplay playsinline></video>
+        <h2>Local SDP:</h2>
+        <textarea id="offer"></textarea>
+    </div>
     <div>
-        <button id="start">start</button>
-        <button id="call">call</button>
-        <button id="hangup">hang up</button>
+        <h2>Remote:</h2>
+        <video id="remotevideo" autoplay playsinline></video>
+        <h2>Remote SDP:</h2>
+        <textarea id="answer"></textarea>
     </div>
 </div>
-
-
 </body>
 </html>
 
@@ -51,6 +55,8 @@
     var btnStart = document.querySelector('button#start');
     var btnCall = document.querySelector('button#call');
     var btnHangUp= document.querySelector('button#hangup');
+    var offerSdpTextarea = document.querySelector('textarea#offer');
+    var answerSdpTextarea = document.querySelector('textarea#answer');
     var localStream;
     var pc1;
     var pc2;
@@ -143,7 +149,13 @@
 
 
 
+    function hangup(){
+        pc1.close();
+        pc2.close();
+        pc1 = null;
+        pc2 = null;
 
+    }
 
 
 
