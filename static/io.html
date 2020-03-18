@@ -62,7 +62,7 @@
     var btnSend = document.querySelector('button#send');
     btnConnect.onclick =()=>{
        // socket = io.connect();
-        socket = io('http://127.0.0.1:5000');
+        socket = io('http://139.196.89.179:5000');
         console.log(socket)
         socket.on('joined',(room,id) =>{
             console.log(room,id)
