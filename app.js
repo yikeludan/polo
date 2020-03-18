@@ -20,8 +20,8 @@ const app = new Koa();
 app.use(catchError)
 app.use(parse())
 app.use(cors());
-//const server = require('http').createServer(app.callback());
-//const io = require('socket.io')(server);
+const server = require('http').createServer(app.callback());
+const io = require('socket.io')(server);
 
 
 
@@ -36,10 +36,9 @@ require('./model/user')
 
 appWs.listen(3030);
 
-app.listen(5000)
+//app.listen(5000)
 
 // 监听端口
-/*
 
 // socket连接
 var so ={}
@@ -72,13 +71,10 @@ io.on('connection', (socket) => {
     });
 
 });
-*/
 
-/*
 server.listen(5000, () => {
     console.log('listening on *:5000'+io);
 });
-*/
 
 
 
