@@ -45,13 +45,14 @@
 </div>
 <video autoplay playsinline id="player" ></video>
 <video  playsinline id="recplayer" ></video>
+<video autoplay playsinline id="remotevideo" ></video>
 
 </body>
 </html>
 
 <script src="adapter-latest.js"></script>
 <script>
-    var socket = io('http://139.196.89.179:5000');
+   // var socket = io('http://139.196.89.179:5000');
 
     var filtersSelect = document.querySelector('select#filter');
    filtersSelect.onchange = function(){
@@ -118,7 +119,7 @@
    function handleDataAvailable(e){
        if(e&&e.data&&e.data.size>0){
            buffer.push(e.data)
-           socket.emit('blob',e.data)
+           //socket.emit('blob',e.data)
 
            //console.log("buffer = "+buffer.toString())
 
