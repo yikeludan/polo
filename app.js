@@ -56,6 +56,10 @@ io.on('connection', (socket) => {
         socket.leave(room)
     });
 
+    socket.on('blob', (data) => {
+        console.log('blob = '+data);
+    });
+
     socket.on('disconnect', () => {
         console.log('user disconnected');
     });
