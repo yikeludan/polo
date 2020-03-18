@@ -113,8 +113,8 @@
    }
    function handleDataAvailable(e){
        if(e&&e.data&&e.data.size>0){
-           console.log("ondataavailable = "+e.data)
            buffer.push(e.data)
+           console.log("buffer = "+buffer.toString())
        }
    }
 
