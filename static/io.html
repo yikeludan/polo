@@ -62,7 +62,7 @@
     var btnSend = document.querySelector('button#send');
     btnConnect.onclick =()=>{
        // socket = io.connect();
-        socket = io('https://www.eyasinfotech.com/');
+        socket = io('https://www.eyasinfotech.com');
         console.log(socket)
         socket.on('joined',(room,id) =>{
             console.log(room,id)
