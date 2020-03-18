@@ -30,33 +30,33 @@
 </style>
 <body>
 
-
-<div id="preview">
-    <div >
-        <h2>Local:</h2>
-        <video id="localvideo" autoplay playsinline></video>
-        <h2>Local SDP:</h2>
-        <textarea id="offer"></textarea>
-    </div>
+<div>
+    <video id="localVideo" autoplay playsinline></video>
+    <h2>Local SDP:</h2>
+    <textarea id="offer"></textarea>
+    <video id="remoteVideo" autoplay playsinline></video>
+    <h2>Remote SDP:</h2>
+    <textarea id="answer"></textarea>
     <div>
-        <h2>Remote:</h2>
-        <video id="remotevideo" autoplay playsinline></video>
-        <h2>Remote SDP:</h2>
-        <textarea id="answer"></textarea>
+        <button id="start">start</button>
+        <button id="call">call</button>
+        <button id="hangup">hang up</button>
     </div>
 </div>
+
+
 </body>
 </html>
 
 <script src="adapter-latest.js"></script>
 <script>
+    var offerSdpTextarea = document.querySelector('textarea#offer');
+    var answerSdpTextarea = document.querySelector('textarea#answer');
     var localVideo = document.querySelector('video#localVideo');
     var remoteVideo = document.querySelector('video#remoteVideo');
     var btnStart = document.querySelector('button#start');
     var btnCall = document.querySelector('button#call');
     var btnHangUp= document.querySelector('button#hangup');
-    var offerSdpTextarea = document.querySelector('textarea#offer');
-    var answerSdpTextarea = document.querySelector('textarea#answer');
     var localStream;
     var pc1;
     var pc2;
@@ -65,6 +65,7 @@
     btnHangUp.onclick = hangup;
     function gotLocalDescription(desc){
         pc1.setLocalDescription(desc);
+        offerSdpTextarea.value = desc.sdp
 
         //send sdp to callee
 
@@ -76,6 +77,7 @@
 
     function gotAnswerDescription(desc){
         pc2.setLocalDescription(desc);
+        answerSdpTextarea.value = desc.sdp
 
         //send sdp to caller
         //recieve sdp from callee
