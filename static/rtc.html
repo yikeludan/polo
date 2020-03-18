@@ -61,6 +61,17 @@
    var btnPlay = document.querySelector('button#recplay');
    var btnDownload = document.querySelector('button#download');
    var mediaRecorder;
+
+   btnDownload.onclick = () =>{
+       var blob = new Blob(buffer,{type:'video/webm'})
+       var url = window.URL.createObjectURL(blob)
+       var a = document.createElement('a');
+       a.href = url;
+       a.style.display = 'none';
+       a.download = "aaa.webm";
+       a.click()
+
+   }
    btnRecord.onclick = () =>{
        if(btnRecord.textContent === 'Start Record'){
            startRecord();
@@ -102,6 +113,7 @@
    }
    function handleDataAvailable(e){
        if(e&&e.data&&e.data.size>0){
+           console.log("ondataavailable = "+e.data)
            buffer.push(e.data)
        }
    }
