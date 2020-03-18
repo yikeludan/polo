@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>Title</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 </head>
@@ -50,7 +51,7 @@
 
 <script src="adapter-latest.js"></script>
 <script>
-    var socket = io('https://www.eyasinfotech.com/websocket');
+    var socket = io('http://139.196.89.179:5000');
 
     var filtersSelect = document.querySelector('select#filter');
    filtersSelect.onchange = function(){
