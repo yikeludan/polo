@@ -38,8 +38,8 @@
       <file leaf-file-name="rtc.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/rtc.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="116" column="41" lean-forward="true" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="52" />
+            <state relative-caret-position="195">
+              <caret line="147" column="32" selection-start-line="147" selection-start-column="26" selection-end-line="147" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -288,12 +288,12 @@
       <workItem from="1584338210125" duration="5726000" />
       <workItem from="1584367275045" duration="8661000" />
       <workItem from="1584422126515" duration="141000" />
-      <workItem from="1584493493745" duration="3345000" />
+      <workItem from="1584493493745" duration="4008000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="330392000" />
+    <option name="totallyTimeSpent" value="331055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -699,8 +699,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="116" column="41" lean-forward="true" selection-start-line="116" selection-start-column="41" selection-end-line="116" selection-end-column="52" />
+        <state relative-caret-position="195">
+          <caret line="147" column="32" selection-start-line="147" selection-start-column="26" selection-end-line="147" selection-end-column="32" />
         </state>
       </provider>
     </entry>
