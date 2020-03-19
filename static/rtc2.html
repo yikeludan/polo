@@ -211,6 +211,7 @@
 
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
+                    console.log("candidate")
                    sendmessage("111111",{
                        type: "candidate",
                        label:e.candidate.sdpMLineIndex,
