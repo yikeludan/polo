@@ -93,6 +93,7 @@ io.on('connection', (socket) => {
     socket.on('message', (room, data)=>{
       /*  console.log(data)
         so[name].emit('message', room, socket.id,data);*/
+      console.log("type = "+data.type)
         socket.to(room).emit('message',room, data);
 
         //socket.to(room).emit('message', room, socket.id, data)//房间内所有人,除自己外
