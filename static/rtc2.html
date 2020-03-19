@@ -218,7 +218,14 @@
                        id:e.candidate.sdpMid,
                        candidate:e.candidate.candidate
                    },"can")*/
-                    socket.emit("ff",e.candidate.candidate)
+
+                  var data = {
+                      type: "candidate",
+                      label:e.candidate.sdpMLineIndex,
+                      id:e.candidate.sdpMid,
+                      candidate:e.candidate.candidate
+                  }
+                    socket.emit("ff",data)
                 }
             }
             pc.ontrack = (e)=>{
