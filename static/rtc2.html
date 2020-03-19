@@ -163,13 +163,7 @@
 
         });
 
-        socket.on('fff', (data) => {
-            var candidate = new RTCIceCandidate({
-                sdpMLineIndex: data.label,
-                candidate: data.candidate
-            });
-            pc.addIceCandidate(candidate);
-        });
+
 
         socket.on('message', (roomid,data) => {
               if(data){
