@@ -126,7 +126,7 @@
                 createPeerConnection()
             }
             state = 'joined_conn'
-
+            console.log("ot = "+state)
         });
         socket.on('full', (roomid,id) => {
             state = 'leave'
