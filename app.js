@@ -53,6 +53,7 @@ io.on('connection', (socket) => {
         so[name] = socket*/
 
         socket.join(room);
+        console.log(name)
         var myRoom = io.sockets.adapter.rooms[room];
         var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
 
