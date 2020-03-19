@@ -56,7 +56,9 @@
     var localStream;
     var pc1;
     var pc2;
+    var pc = null;
     var socket;
+    var state = 'init';
     btnStart.onclick = start;
     btnCall.onclick = call;
     btnHangUp.onclick = hangup;
@@ -115,21 +117,31 @@
     function conn(){
         socket = io('https://www.eyasinfotech.com');
         socket.on('joined', (roomid, id) => {
-           console.log("joined = "+roomid, id);
+            console.log("joined = "+roomid, id);
+            state = 'joined'
+            createPeerConnection()
         });
         socket.on('otherjoin', (roomid) => {
+            if(state == 'joined_unbind'){
+                createPeerConnection()
+            }
+            state = 'joined_conn'
 
         });
         socket.on('full', (roomid,id) => {
-
+            state = 'leave'
+            socket.disconnect()
+            alert("full")
         });
 
         socket.on('leaved', (roomid,id) => {
-
+            state = 'leave'
+            socket.disconnect()
         });
 
         socket.on('bye', (roomid,id) => {
-
+            state = 'joined_unbind'
+            closePeerConnection()
         });
 
         socket.on('disconnect', (roomid,id) => {
@@ -144,6 +156,59 @@
         return;
 
     }
+
+
+    function createPeerConnection(){
+        if(!pc){
+            var pcConfig = {
+                'iceServers': [{
+                    'urls': 'turn:139.196.89.179:3478',
+                    'credential': "root",
+                    'username': "root"
+                }]
+            };
+
+            pc = new RTCPeerConnection(pcConfig);
+            console.log("pc = "+pc)
+
+
+
+
+
+            pc.onicecandidate = (e)=>{
+                if(e.candidate){
+
+                }
+            }
+            pc.ontrack = (e)=>{
+                remoteVideo.srcObject = e.streams[0]
+            }
+        }
+
+        if(localStream){
+            localStream.getTracks().forEach((track) =>{
+                pc.addTrack(track)
+            })
+        }
+    }
+
+
+    function closePeerConnection(){
+        if(pc){
+            pc.close();
+            pc = null;
+        }
+    }
+
+    function closeLocalMedia(){
+        if(localStream && localStream.getTracks()){
+            localStream.getTracks().forEach((track)=>{
+                track.stop();
+            });
+        }
+        localStream = null;
+    }
+
 
     function handleError(err){
         console.log(err)
@@ -187,7 +252,8 @@
         if(socket){
             socket.emit('leave',"111111")
         }
-
+        closePeerConnection();
+        closeLocalMedia();
     }
 
 
