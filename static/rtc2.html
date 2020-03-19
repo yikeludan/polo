@@ -123,8 +123,8 @@
         });
         socket.on('call1', (roomid, id) => {
             console.log("call1= ");
-            state = 'joined'
-            call1();
+
+           // call1();
         });
         socket.on('otherjoin', (roomid) => {
             if(state == 'joined_unbind'){
@@ -132,6 +132,7 @@
             }
             state = 'joined_conn'
             console.log("ot = "+state)
+
             call1();
         });
         socket.on('full', (roomid,id) => {
