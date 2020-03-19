@@ -62,6 +62,7 @@ io.on('connection', (socket) => {
            // socket.broadcast.emit('joined', room, socket.id);
            socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
             if(users > 1){
+               // socket.emit('call1', room, socket.id);
                 socket.to(room).emit('otherjoin', room, socket.id);
             }
 
@@ -89,10 +90,10 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('message', (room, data,type)=>{
+    socket.on('message', (room, data)=>{
       /*  console.log(data)
         so[name].emit('message', room, socket.id,data);*/
-        socket.to(room).emit('message',room, data,type);
+        socket.to(room).emit('message',room, data);
 
         //socket.to(room).emit('message', room, socket.id, data)//房间内所有人,除自己外
     });
