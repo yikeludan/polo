@@ -91,7 +91,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('ff', (data) => {
-        console.log("ff = "+data);
+        socket.to(room).emit('fff', data);
     });
 
 
