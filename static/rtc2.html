@@ -123,8 +123,16 @@
         });
         socket.on('call1', (roomid, id) => {
             console.log("call1= ");
-
-           // call1();
+            /*pc.onicecandidate = (e)=>{
+                if(e.candidate){
+                    sendmessage("111111",{
+                        type: "candidate",
+                        label:e.candidate.sdpMLineIndex,
+                        id:e.candidate.sdpMid,
+                        candidate:e.candidate.candidate
+                    },'candidate')
+                }
+            }*/
         });
         socket.on('otherjoin', (roomid) => {
             if(state == 'joined_unbind'){
@@ -165,11 +173,15 @@
                      pc.setRemoteDescription(new RTCSessionDescription(data))
                   }
                   if(data.type ==='candidate'){
+                     console.log(data.type)
                       var candidate = new RTCIceCandidate({
                           sdpMLineIndex: data.label,
                           candidate: data.candidate
                       });
                       pc.addIceCandidate(candidate);
+
+
+
                   }
               }
         });
@@ -197,7 +209,7 @@
 
 
 
-         /*   pc.onicecandidate = (e)=>{
+            pc.onicecandidate = (e)=>{
                 if(e.candidate){
                    sendmessage("111111",{
                        type: "candidate",
@@ -206,7 +218,7 @@
                        candidate:e.candidate.candidate
                    },'candidate')
                 }
-            }*/
+            }
             pc.ontrack = (e)=>{
                 remoteVideo.srcObject = e.streams[0]
             }
