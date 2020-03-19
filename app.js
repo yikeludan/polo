@@ -23,6 +23,7 @@ app.use(cors());
 const server = require('http').createServer(app.callback());
 const io = require('socket.io')(server);
 
+var USERCOUNT = 3;
 
 
 app.use(static(path.join(__dirname, './static')))
@@ -46,14 +47,35 @@ io.on('connection', (socket) => {
     console.log('connected');
 
     socket.on('join', (room,name) => {
-        socket.join(room)
+      /*  socket.join(room)
         var myRoom = io.sockets.adapter.rooms[room]
         socket.emit('joined', room, socket.id);
-        so[name] = socket
+        so[name] = socket*/
+
+        socket.join(room);
+        var myRoom = io.sockets.adapter.rooms[room];
+        var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
+
+        if(users < USERCOUNT){
+            socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
+            if(users > 1){
+                socket.to(room).emit('otherjoin', room, socket.id);
+            }
+
+        }else{
+            socket.leave(room);
+            socket.emit('full', room, socket.id);
+        }
     });
     socket.on('leave', (room) => {
-        var myRoom = io.sockets.adapter.rooms[room]
-        socket.leave(room)
+       /* var myRoom = io.sockets.adapter.rooms[room]
+        socket.leave(room)*/
+        var myRoom = io.sockets.adapter.rooms[room];
+        var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
+        //socket.emit('leaved', room, socket.id);
+        //socket.broadcast.emit('leaved', room, socket.id);
+        socket.to(room).emit('bye', room, socket.id);
+        socket.emit('leaved', room, socket.id);
     });
 
     socket.on('blob', (data) => {
@@ -64,9 +86,11 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('message', (room, data,name)=>{
-        console.log(data)
-        so[name].emit('message', room, socket.id,data);
+    socket.on('message', (room, data)=>{
+      /*  console.log(data)
+        so[name].emit('message', room, socket.id,data);*/
+        socket.to(room).emit('message',room, data);
+
         //socket.to(room).emit('message', room, socket.id, data)//房间内所有人,除自己外
     });
 

@@ -141,7 +141,8 @@
 
         var offs = {
             offerToReceiveAudio:1,
-            offerToReceiveVideo:1
+            offerToReceiveVideo:1,
+            iceRestart:true
         }
 
         pc1.createOffer(offs).then(gotLocalDescription).catch(handleError);
