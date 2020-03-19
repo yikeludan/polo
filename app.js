@@ -90,6 +90,11 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
+    socket.on('ff', (data) => {
+        console.log("ff = "+data);
+    });
+
+
     socket.on('message', (room, data)=>{
       /*  console.log(data)
         so[name].emit('message', room, socket.id,data);*/

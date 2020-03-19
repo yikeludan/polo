@@ -212,12 +212,13 @@
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
                     console.log("candidate")
-                   sendmessage("111111",{
+                  /* sendmessage("111111",{
                        type: "candidate",
                        label:e.candidate.sdpMLineIndex,
                        id:e.candidate.sdpMid,
                        candidate:e.candidate.candidate
-                   },"can")
+                   },"can")*/
+                    socket.emit("ff",e.candidate.sdpMLineIndex)
                 }
             }
             pc.ontrack = (e)=>{
