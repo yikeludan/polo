@@ -56,6 +56,7 @@ io.on('connection', (socket) => {
         console.log(name)
         var myRoom = io.sockets.adapter.rooms[room];
         var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
+        console.log(users)
 
         if(users < USERCOUNT){
             socket.broadcast.emit('joined', room, socket.id);
