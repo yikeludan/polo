@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/rtc2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/rtc2.html" afterDir="false" />
-    </list>
+    <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -29,7 +27,16 @@
         <entry file="file://$PROJECT_DIR$/static/rtc2.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="106">
-              <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
+              <caret line="166" column="47" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rtc3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/rtc3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="156" column="17" selection-start-line="156" selection-end-line="157" />
             </state>
           </provider>
         </entry>
@@ -72,10 +79,10 @@
       <find>call1</find>
       <find>pc.onicecandidate</find>
       <find>candidate</find>
-      <find>event</find>
       <find>sendmessage</find>
-      <find>USERCOUNT</find>
+      <find>event</find>
       <find>sendMessage</find>
+      <find>USERCOUNT</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -280,15 +287,16 @@
       <workItem from="1584367275045" duration="8661000" />
       <workItem from="1584422126515" duration="141000" />
       <workItem from="1584493493745" duration="20345000" />
-      <workItem from="1584580768592" duration="18066000" />
+      <workItem from="1584580768592" duration="18380000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="365458000" />
+    <option name="totallyTimeSpent" value="365772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49519232" visible="true" weight="0.26767275" />
@@ -670,6 +678,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/rtc3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="156" column="17" selection-start-line="156" selection-end-line="157" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
@@ -677,17 +692,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/rtc3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
-          <caret line="229" column="30" lean-forward="true" selection-start-line="229" selection-start-column="30" selection-end-line="229" selection-end-column="30" />
+          <caret line="166" column="47" selection-start-line="166" selection-start-column="32" selection-end-line="166" selection-end-column="47" />
         </state>
       </provider>
     </entry>
