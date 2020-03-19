@@ -127,6 +127,7 @@
             }
             state = 'joined_conn'
             console.log("ot = "+state)
+            call1();
         });
         socket.on('full', (roomid,id) => {
             state = 'leave'
@@ -148,8 +149,23 @@
 
         });
 
-        socket.on('message', (roomid,data) => {
-
+        socket.on('message', (roomid,data,type) => {
+              if(data){
+                 if(type ==='offer'){
+                     pc.setRemoteDescription(new RTCSessionDescription(data))
+                     pc.createAnswer().then(getAnswer).catch(handleError)
+                 }
+                 if(type ==='answer'){
+                     pc.setRemoteDescription(new RTCSessionDescription(data))
+                  }
+                  if(data.type ==='candidate'){
+                      var candidate = new RTCIceCandidate({
+                          sdpMLineIndex: data.label,
+                          candidate: data.candidate
+                      });
+                      pc.addIceCandidate(candidate);
+                  }
+              }
         });
         socket.emit('join',"111111","333")
 
@@ -177,7 +193,12 @@
 
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
-
+                   sendmessage("111111",{
+                       type: "candidate",
+                       label:e.candidate.sdpMLineIndex,
+                       id:e.candidate.sdpMid,
+                       candidate:e.candidate.candidate
+                   },'candidate')
                 }
             }
             pc.ontrack = (e)=>{
@@ -187,7 +208,7 @@
 
         if(localStream){
             localStream.getTracks().forEach((track) =>{
-                pc.addTrack(track)
+                pc.addTrack(track,localStream)
             })
         }
     }
@@ -209,13 +230,41 @@
         localStream = null;
     }
 
+    function getAnswer(desc){
+        pc.setLocalDescription(desc);
 
+        //send answer sdp
+        sendMessage("111111", desc,'answer');
+    }
     function handleError(err){
         console.log(err)
     }
 
     function getRemoteStream(e){
         remoteVideo.srcObject = e.streams[0]
+    }
+    function sendmessage(rommid,data,type){
+        if(socket){
+            socket.emit("'message'",rommid,data,type);
+        }
+    }
+
+    function getOffer(desc){
+        pc.setLocalDescription(desc)
+        console.log("desc = "+desc)
+        //sendmessage("111111",desc,'offer')
+    }
+    function call1(){
+        if(state === 'joined_conn'){
+            if(pc){
+                var options = {
+                    offerToReceiveAudio:1,
+                    offerToReceiveVideo:1,
+                    iceRestart:true
+                }
+                pc.createOffer(options).then(getOffer).catch(handleError)
+            }
+        }
     }
 
     function call(){
