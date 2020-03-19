@@ -220,12 +220,12 @@
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
                     console.log("candidate")
-                  /* sendmessage("111111",{
-                       type: "candidate",
-                       label:e.candidate.sdpMLineIndex,
-                       id:e.candidate.sdpMid,
-                       candidate:e.candidate.candidate
-                   },"can")*/
+                    sendMessage("111111", {
+                        type: 'candidate',
+                        label:event.candidate.sdpMLineIndex,
+                        id:event.candidate.sdpMid,
+                        candidate: event.candidate.candidate
+                    },"can");
 
                   var data = {
                       type: "candidate",
@@ -233,7 +233,7 @@
                       id:e.candidate.sdpMid,
                       candidate:e.candidate.candidate
                   }
-                    socket.emit("ff",data)
+                    //socket.emit("ff",data)
                 }
             }
             pc.ontrack = (e)=>{
