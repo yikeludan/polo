@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="05c17cb1-1dbe-45af-8526-719c72002a01" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/rtc2.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/rtc2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +28,8 @@
       <file leaf-file-name="rtc2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/rtc2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-207">
-              <caret line="165" selection-start-line="165" selection-end-line="165" />
+            <state relative-caret-position="28">
+              <caret line="179" column="22" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -37,8 +37,8 @@
       <file leaf-file-name="rtc3.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/rtc3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="269" column="46" lean-forward="true" selection-start-line="269" selection-start-column="46" selection-end-line="269" selection-end-column="46" />
+            <state relative-caret-position="160">
+              <caret line="265" column="51" selection-start-line="265" selection-start-column="36" selection-end-line="265" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -289,15 +289,16 @@
       <workItem from="1584367275045" duration="8661000" />
       <workItem from="1584422126515" duration="141000" />
       <workItem from="1584493493745" duration="20345000" />
-      <workItem from="1584580768592" duration="18646000" />
+      <workItem from="1584580768592" duration="19441000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="366038000" />
+    <option name="totallyTimeSpent" value="366833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49519232" visible="true" weight="0.26767275" />
@@ -688,15 +689,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="269" column="46" lean-forward="true" selection-start-line="269" selection-start-column="46" selection-end-line="269" selection-end-column="46" />
+        <state relative-caret-position="160">
+          <caret line="265" column="51" selection-start-line="265" selection-start-column="36" selection-end-line="265" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/rtc2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-207">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        <state relative-caret-position="28">
+          <caret line="179" column="22" selection-start-line="179" selection-start-column="22" selection-end-line="179" selection-end-column="52" />
         </state>
       </provider>
     </entry>

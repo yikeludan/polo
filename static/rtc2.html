@@ -176,11 +176,13 @@
                   }
                   if(data.type ==='candidate'){
                      console.log(data.type)
-                      var candidate = new RTCIceCandidate({
+                     /* var candidate = new RTCIceCandidate({
                           sdpMLineIndex: data.label,
                           candidate: data.candidate
-                      });
-                     console.log("ca = "+candidate)
+                      });*/
+                      var candidate = new RTCIceCandidate(data.candidate);
+
+                      console.log("ca = "+candidate)
                       pc.addIceCandidate(candidate);
 
 
