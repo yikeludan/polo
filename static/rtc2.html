@@ -151,11 +151,11 @@
 
         socket.on('message', (roomid,data,type) => {
               if(data){
-                 if(type ==='offer'){
+                 if(data.type ==='offer'){
                      pc.setRemoteDescription(new RTCSessionDescription(data))
                      pc.createAnswer().then(getAnswer).catch(handleError)
                  }
-                 if(type ==='answer'){
+                 if(data.type ==='answer'){
                      pc.setRemoteDescription(new RTCSessionDescription(data))
                   }
                   if(data.type ==='candidate'){

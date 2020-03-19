@@ -89,10 +89,10 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('message', (room, data)=>{
+    socket.on('message', (room, data,type)=>{
       /*  console.log(data)
         so[name].emit('message', room, socket.id,data);*/
-        socket.to(room).emit('message',room, data);
+        socket.to(room).emit('message',room, data,type);
 
         //socket.to(room).emit('message', room, socket.id, data)//房间内所有人,除自己外
     });
