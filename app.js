@@ -57,7 +57,8 @@ io.on('connection', (socket) => {
         var users = (myRoom)? Object.keys(myRoom.sockets).length : 0;
 
         if(users < USERCOUNT){
-            socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
+            socket.broadcast.emit('joined', room, socket.id);
+           // socket.emit('joined', room, socket.id); //发给除自己之外的房间内的所有人
             if(users > 1){
                 socket.to(room).emit('otherjoin', room, socket.id);
             }

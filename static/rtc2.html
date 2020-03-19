@@ -107,10 +107,46 @@
     function getMedia(stream){
         localVideo.srcObject = stream;
         localStream  = stream;
+
+        conn();
+    }
+
+
+    function conn(){
+        socket = io('https://www.eyasinfotech.com');
+        socket.on('joined', (roomid, id) => {
+           console.log("joined = "+roomid, id);
+        });
+        socket.on('otherjoin', (roomid) => {
+
+        });
+        socket.on('full', (roomid,id) => {
+
+        });
+
+        socket.on('leaved', (roomid,id) => {
+
+        });
+
+        socket.on('bye', (roomid,id) => {
+
+        });
+
+        socket.on('disconnect', (roomid,id) => {
+
+        });
+
+        socket.on('message', (roomid,data) => {
+
+        });
+        socket.emit('join',"111111")
+
+        return;
+
     }
 
     function handleError(err){
-       console.log(err)
+        console.log(err)
     }
 
     function getRemoteStream(e){
@@ -148,10 +184,9 @@
 
 
     function hangup(){
-        pc1.close();
-        pc2.close();
-        pc1 = null;
-        pc2 = null;
+        if(socket){
+            socket.emit('leave',"111111")
+        }
 
     }
 
