@@ -93,6 +93,7 @@ io.on('connection', (socket) => {
     socket.on('message', (room, data)=>{
       /*  console.log(data)
         so[name].emit('message', room, socket.id,data);*/
+        console.log("111112")
       console.log("type = "+data.type)
         socket.to(room).emit('message',room, data);
 
