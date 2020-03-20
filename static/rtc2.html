@@ -201,12 +201,7 @@
                 }]
             };
 
-            pc = new RTCPeerConnection(pcConfig);
-
-
-
-
-
+            pc = new RTCPeerConnection(pcConfig)
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
                     sendmessage("111111",{
@@ -214,7 +209,7 @@
                         label:event.candidate.sdpMLineIndex,
                         id:event.candidate.sdpMid,
                         candidate: event.candidate.candidate
-                    },"can");
+                    });
                 }
             }
             pc.ontrack = (e)=>{
@@ -251,7 +246,7 @@
         pc.setLocalDescription(desc);
 
         //send answer sdp
-        sendMessage("111111", desc,'answer');
+        sendMessage("111111", desc,);
     }
     function handleError(err){
         console.log(err)
@@ -260,7 +255,7 @@
     function getRemoteStream(e){
         remoteVideo.srcObject = e.streams[0]
     }
-    function sendmessage(rommid,data,type){
+    function sendmessage(rommid,data){
         if(socket){
             socket.emit("message",rommid,data);
         }
@@ -268,7 +263,8 @@
 
     function getOffer(desc){
         pc.setLocalDescription(desc)
-        //sendmessage("111111",desc,'offer')
+        sendMessage("111111", desc);
+
     }
     function call1(){
         if(state === 'joined_conn'){

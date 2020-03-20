@@ -193,21 +193,11 @@
 
         localVideo.srcObject = localStream;
 
-        //这个函数的位置特别重要，
-        //一定要放到getMediaStream之后再调用
-        //否则就会出现绑定失败的情况
-        //
-        //setup connection
         conn();
 
-        //btnStart.disabled = true;
-        //btnCall.disabled = true;
-        //btnHangup.disabled = true;
     }
 
-    function getDeskStream(stream){
-        localStream = stream;
-    }
+
 
     function handleError(err){
         console.error('Failed to get Media Stream!', err);
