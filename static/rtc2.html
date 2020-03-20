@@ -59,6 +59,8 @@
     var pc = null;
     var socket;
     var state = 'init';
+    var remoteStream = null;
+
     btnStart.onclick = start;
     btnCall.onclick = call;
     btnHangUp.onclick = hangup;
@@ -117,12 +119,10 @@
     function conn(){
         socket = io('https://www.eyasinfotech.com');
         socket.on('joined', (roomid, id) => {
-            console.log("joined = "+roomid, id);
             state = 'joined'
             createPeerConnection()
         });
         socket.on('call1', (roomid, id) => {
-            console.log("call1= ");
             /*pc.onicecandidate = (e)=>{
                 if(e.candidate){
                     sendmessage("111111",{
@@ -139,7 +139,6 @@
                 createPeerConnection()
             }
             state = 'joined_conn'
-            console.log("ot = "+state)
 
             call1();
         });
@@ -175,15 +174,13 @@
                      pc.setRemoteDescription(new RTCSessionDescription(data))
                   }
                   if(data.type ==='candidate'){
-                     console.log(data.type)
+                     console.log("data.type"+data.type)
+
                      var candidate = new RTCIceCandidate({
                           sdpMLineIndex: data.label,
                           candidate: data.candidate
                      });
-                     // var candidate = new RTCIceCandidate(data.candidate);
-
-                     // console.log("ca = "+candidate)
-                      pc.addIceCandidate(candidate);
+                     pc.addIceCandidate(candidate);
                   }
               }
         });
@@ -205,7 +202,6 @@
             };
 
             pc = new RTCPeerConnection(pcConfig);
-            console.log("pc = "+pc)
 
 
 
@@ -213,7 +209,6 @@
 
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
-                    console.log("candidate")
                     sendmessage("111111",{
                         type: 'candidate',
                         label:event.candidate.sdpMLineIndex,
@@ -235,6 +230,8 @@
                 }
             }
             pc.ontrack = (e)=>{
+                remoteStream = e.streams[0];
+
                 remoteVideo.srcObject = e.streams[0]
             }
         }
@@ -278,14 +275,12 @@
     }
     function sendmessage(rommid,data,type){
         if(socket){
-            console.log("so ="+rommid)
             socket.emit("message",rommid,data);
         }
     }
 
     function getOffer(desc){
         pc.setLocalDescription(desc)
-        console.log("desc = "+desc.type)
         //sendmessage("111111",desc,'offer')
     }
     function call1(){
