@@ -214,7 +214,7 @@
             pc.onicecandidate = (e)=>{
                 if(e.candidate){
                     console.log("candidate")
-                    sendMessage("111111",{
+                    sendmessage("111111",{
                         type: 'candidate',
                         label:event.candidate.sdpMLineIndex,
                         id:event.candidate.sdpMid,
@@ -278,6 +278,7 @@
     }
     function sendmessage(rommid,data,type){
         if(socket){
+            console.log("so ="+rommid)
             socket.emit("'message'",rommid,data);
         }
     }
