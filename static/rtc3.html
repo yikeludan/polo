@@ -120,7 +120,6 @@
         socket.on('otherjoin', (roomid) => {
             state = 'joined_conn';
             call();
-
         });
 
         socket.on('full', (roomid, id) => {
@@ -183,7 +182,6 @@
         //开启本地视频
         start();
 
-        return true;
     }
 
     function getMediaStream(stream){

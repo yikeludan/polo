@@ -123,16 +123,7 @@
             createPeerConnection()
         });
         socket.on('call1', (roomid, id) => {
-            /*pc.onicecandidate = (e)=>{
-                if(e.candidate){
-                    sendmessage("111111",{
-                        type: "candidate",
-                        label:e.candidate.sdpMLineIndex,
-                        id:e.candidate.sdpMid,
-                        candidate:e.candidate.candidate
-                    },'candidate')
-                }
-            }*/
+
         });
         socket.on('otherjoin', (roomid) => {
             if(state == 'joined_unbind'){
@@ -195,9 +186,9 @@
         if(!pc){
             var pcConfig = {
                 'iceServers': [{
-                    'urls': 'turn:139.196.89.179:3478',
-                    'credential': "root",
-                    'username': "root"
+                    'urls':'turn:139.196.89.179:3478',
+                    'credential':"root",
+                    'username':"root"
                 }]
             };
 
@@ -214,15 +205,12 @@
             }
 
             pc.ontrack = getRemoteStream;
-
-
+            localStream.getTracks().forEach((track)=>{
+                pc.addTrack(track, localStream);
+            });
         }
 
-        if(localStream){
-            localStream.getTracks().forEach((track) =>{
-                pc.addTrack(track,localStream)
-            })
-        }
+        return;
     }
 
 
@@ -262,18 +250,15 @@
     function getOffer(desc){
         pc.setLocalDescription(desc)
         sendMessage("111111", desc);
-
     }
     function call1(){
         if(state === 'joined_conn'){
-            if(pc){
                 var options = {
                     offerToReceiveAudio:1,
-                    offerToReceiveVideo:1,
-                    iceRestart:true
+                    offerToReceiveVideo:1
                 }
                 pc.createOffer(options).then(getOffer).catch(handleError)
-            }
+
         }
     }
 
