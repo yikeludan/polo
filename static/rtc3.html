@@ -114,7 +114,6 @@
             console.log('receive joined message!', roomid, id);
             state = 'joined'
             createPeerConnection();
-            bindTracks();
 
         });
 
@@ -244,17 +243,12 @@
 
     function getAnswer(desc){
         pc.setLocalDescription(desc);
-
-        //send answer sdp
         sendMessage(roomid, desc);
     }
 
     function getOffer(desc){
         pc.setLocalDescription(desc);
-        offerdesc = desc;
-
-        //send offer sdp
-        sendMessage(roomid, offerdesc);
+        sendMessage(roomid, desc);
 
     }
 
@@ -279,6 +273,9 @@
             }
 
             pc.ontrack = getRemoteStream;
+            localStream.getTracks().forEach((track)=>{
+                pc.addTrack(track, localStream);
+            });
         }else {
             console.warning('the pc have be created!');
         }
