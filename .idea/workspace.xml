@@ -27,16 +27,7 @@
         <entry file="file://$PROJECT_DIR$/static/rtc2.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="43">
-              <caret line="216" column="31" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="rtc3.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/rtc3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="421" column="33" lean-forward="true" selection-start-line="421" selection-start-column="33" selection-end-line="421" selection-end-column="33" />
+              <caret line="280" column="38" lean-forward="true" selection-start-line="280" selection-start-column="38" selection-end-line="280" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -76,13 +67,13 @@
       <find>call1</find>
       <find>pc.onicecandidate</find>
       <find>candidate</find>
-      <find>sendmessage</find>
       <find>event</find>
       <find>USERCOUNT</find>
       <find>RTCIceCandidate</find>
       <find>conn(</find>
       <find>label</find>
       <find>sendMessage</find>
+      <find>sendmessage</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -288,12 +279,12 @@
       <workItem from="1584422126515" duration="141000" />
       <workItem from="1584493493745" duration="20345000" />
       <workItem from="1584580768592" duration="19441000" />
-      <workItem from="1584685183320" duration="3706000" />
+      <workItem from="1584685183320" duration="3785000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="370539000" />
+    <option name="totallyTimeSpent" value="370618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -692,7 +683,7 @@
     <entry file="file://$PROJECT_DIR$/static/rtc2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="43">
-          <caret line="216" column="31" selection-start-line="216" selection-start-column="20" selection-end-line="216" selection-end-column="31" />
+          <caret line="280" column="38" lean-forward="true" selection-start-line="280" selection-start-column="38" selection-end-line="280" selection-end-column="38" />
         </state>
       </provider>
     </entry>

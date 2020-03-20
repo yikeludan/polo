@@ -279,7 +279,7 @@
     function sendmessage(rommid,data,type){
         if(socket){
             console.log("so ="+rommid)
-            socket.emit("'message'",rommid,data);
+            socket.emit("message",rommid,data);
         }
     }
 
