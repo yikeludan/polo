@@ -255,7 +255,8 @@
         if(state === 'joined_conn'){
                 var options = {
                     offerToReceiveAudio:1,
-                    offerToReceiveVideo:1
+                    offerToReceiveVideo:1,
+                    iceRestart:true
                 }
                 pc.createOffer(options).then(getOffer).catch(handleError)
 
