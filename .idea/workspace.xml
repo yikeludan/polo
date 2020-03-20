@@ -27,20 +27,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rtc2.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="rtc2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/rtc2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="125" column="12" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="12" />
+            <state relative-caret-position="160">
+              <caret line="249" column="13" selection-start-line="249" selection-start-column="13" selection-end-line="249" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rtc3.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rtc3.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/rtc3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-509">
-              <caret line="121" column="19" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
+            <state relative-caret-position="43">
+              <caret line="249" lean-forward="true" selection-start-line="249" selection-end-line="249" />
             </state>
           </provider>
         </entry>
@@ -57,10 +57,8 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>https</find>
       <find>io.</find>
       <find>call</find>
-      <find>call1</find>
       <find>pc.onicecandidate</find>
       <find>candidate</find>
       <find>event</find>
@@ -68,7 +66,6 @@
       <find>RTCIceCandidate</find>
       <find>conn(</find>
       <find>label</find>
-      <find>connSignalServer</find>
       <find>shareDeskBox</find>
       <find>pcConfig</find>
       <find>offerdesc</find>
@@ -78,7 +75,6 @@
       <find>console.log</find>
       <find>getQueryVariable</find>
       <find>sendmessage</find>
-      <find>getOffer</find>
       <find>getAnswer</find>
       <find>pc.ontrack</find>
       <find>remoteStream</find>
@@ -87,6 +83,10 @@
       <find>createPeerConnection</find>
       <find>closePeerConnection</find>
       <find>sendMessage</find>
+      <find>getOffer</find>
+      <find>new RTCPeerConnection</find>
+      <find>connSignalServer</find>
+      <find>call1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -292,16 +292,15 @@
       <workItem from="1584422126515" duration="141000" />
       <workItem from="1584493493745" duration="20345000" />
       <workItem from="1584580768592" duration="19441000" />
-      <workItem from="1584685183320" duration="6025000" />
+      <workItem from="1584685183320" duration="6964000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="372858000" />
+    <option name="totallyTimeSpent" value="373797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49519232" visible="true" weight="0.26767275" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -310,7 +309,7 @@
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.32978722" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32920355" />
       <window_info id="Structure" order="1" sideWeight="0.5048077" side_tool="true" weight="0.26846704" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" weight="0.6241135" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.49722" visible="true" weight="0.6241135" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -687,17 +686,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/rtc3.html">
+    <entry file="file://$PROJECT_DIR$/static/rtc2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-509">
-          <caret line="121" column="19" selection-start-line="121" selection-start-column="19" selection-end-line="121" selection-end-column="19" />
+        <state relative-caret-position="160">
+          <caret line="249" column="13" selection-start-line="249" selection-start-column="13" selection-end-line="249" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/rtc2.html">
+    <entry file="file://$PROJECT_DIR$/static/rtc3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="125" column="12" selection-start-line="125" selection-start-column="12" selection-end-line="125" selection-end-column="12" />
+        <state relative-caret-position="43">
+          <caret line="249" lean-forward="true" selection-start-line="249" selection-end-line="249" />
         </state>
       </provider>
     </entry>
